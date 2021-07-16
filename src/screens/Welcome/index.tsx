@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useNavigation } from '@react-navigation/native';
+
 import {
   Container,
   Title,
@@ -12,6 +14,8 @@ import {
 } from './styles';
 
 const Welcome = (): JSX.Element => {
+  const navigation = useNavigation();
+
   return (
     <Container>
       <Wrapper>
@@ -25,7 +29,10 @@ const Welcome = (): JSX.Element => {
         <ActionsContainer>
           <ActionText>O que você deseja fazer?</ActionText>
 
-          <StyledButton title={'Entrar'} />
+          <StyledButton
+            title={'Entrar'}
+            onPress={() => navigation.navigate('Home')}
+          />
           <StyledButton title={'Criar conta'} colorStyle={'lightTeal'} />
         </ActionsContainer>
       </Wrapper>
