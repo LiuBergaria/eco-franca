@@ -115,5 +115,6 @@ module.exports = {
     ],
     '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
     'react-native-a11y/has-valid-accessibility-ignores-invert-colors': ['warn'],
+    '@typescript-eslint/ban-ts-comment': 'off',
   },
 };

@@ -8,7 +8,7 @@ import { Container, Title, Icon, FloatElementContainer } from './styles';
 interface IProps extends TouchableOpacityProps {
   title: string;
   icon: string;
-  lightStyle: boolean;
+  lightStyle?: boolean;
   isRow?: boolean;
   floatElement?: JSX.Element;
 }
@@ -16,7 +16,7 @@ interface IProps extends TouchableOpacityProps {
 const PressableBlock = ({
   title,
   icon,
-  lightStyle,
+  lightStyle = false,
   isRow = true,
   floatElement,
   ...props
