@@ -8,20 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* EcoFrancaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* EcoFrancaTests.m */; };
+		04C4873D54C44542BE6DFBDF /* Archivo-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E124B36C459940E1A18CB252 /* Archivo-SemiBold.ttf */; };
+		0ECCDED2C1104829B72D6FDE /* Archivo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1BD64B152E554BF89B74CB3F /* Archivo-Medium.ttf */; };
+		127BA9A268A248479D9F7A43 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2B56972352B40E9B187E07A /* Inter-Regular.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		1990BF4A7481F7DDED4220CF /* libPods-EcoFranca-EcoFrancaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B5629310EA98B563F82536F /* libPods-EcoFranca-EcoFrancaTests.a */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		E56F14361CA23B3A4AF14B15 /* libPods-EcoFranca.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFF3585A9CDFBC1C801B7DBA /* libPods-EcoFranca.a */; };
-		794A7CBBDA304C37BAA5E5D3 /* Archivo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B4E30E0E87442D684B9B850 /* Archivo-Bold.ttf */; };
-		0ECCDED2C1104829B72D6FDE /* Archivo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1BD64B152E554BF89B74CB3F /* Archivo-Medium.ttf */; };
 		6945DB22341748E89B50581D /* Archivo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9901AFFC95DD40DD8AA0CB90 /* Archivo-Regular.ttf */; };
-		04C4873D54C44542BE6DFBDF /* Archivo-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E124B36C459940E1A18CB252 /* Archivo-SemiBold.ttf */; };
+		794A7CBBDA304C37BAA5E5D3 /* Archivo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B4E30E0E87442D684B9B850 /* Archivo-Bold.ttf */; };
+		7FB9F70A2F884537A01CD11A /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5AD0E41E4B174E4E93766F45 /* Inter-SemiBold.ttf */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		AB53A70FFDF14AE69D62512E /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DA49FAABE9E04BE19A860562 /* Inter-Bold.ttf */; };
 		BFA51A7DA48F4D0DBA54885B /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14D611BFA6F64DD6A22B7E1C /* Inter-Medium.ttf */; };
-		127BA9A268A248479D9F7A43 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2B56972352B40E9B187E07A /* Inter-Regular.ttf */; };
-		7FB9F70A2F884537A01CD11A /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5AD0E41E4B174E4E93766F45 /* Inter-SemiBold.ttf */; };
+		E56F14361CA23B3A4AF14B15 /* libPods-EcoFranca.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFF3585A9CDFBC1C801B7DBA /* libPods-EcoFranca.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,21 +45,21 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = EcoFranca/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = EcoFranca/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = EcoFranca/main.m; sourceTree = "<group>"; };
+		14D611BFA6F64DD6A22B7E1C /* Inter-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Medium.ttf"; path = "../assets/fonts/Inter-Medium.ttf"; sourceTree = "<group>"; };
 		18B449BD2E5B8AE233A93FC9 /* Pods-EcoFranca-EcoFrancaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcoFranca-EcoFrancaTests.debug.xcconfig"; path = "Target Support Files/Pods-EcoFranca-EcoFrancaTests/Pods-EcoFranca-EcoFrancaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1BD64B152E554BF89B74CB3F /* Archivo-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Archivo-Medium.ttf"; path = "../assets/fonts/Archivo-Medium.ttf"; sourceTree = "<group>"; };
 		4A0A385C16E236DC8EF9541D /* Pods-EcoFranca-EcoFrancaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcoFranca-EcoFrancaTests.release.xcconfig"; path = "Target Support Files/Pods-EcoFranca-EcoFrancaTests/Pods-EcoFranca-EcoFrancaTests.release.xcconfig"; sourceTree = "<group>"; };
+		5AD0E41E4B174E4E93766F45 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-SemiBold.ttf"; path = "../assets/fonts/Inter-SemiBold.ttf"; sourceTree = "<group>"; };
 		7656BACEEE6F415FB5CB1AA4 /* Pods-EcoFranca.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcoFranca.release.xcconfig"; path = "Target Support Files/Pods-EcoFranca/Pods-EcoFranca.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = EcoFranca/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8B4E30E0E87442D684B9B850 /* Archivo-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Archivo-Bold.ttf"; path = "../assets/fonts/Archivo-Bold.ttf"; sourceTree = "<group>"; };
+		9901AFFC95DD40DD8AA0CB90 /* Archivo-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Archivo-Regular.ttf"; path = "../assets/fonts/Archivo-Regular.ttf"; sourceTree = "<group>"; };
 		9B3D4862AA98A2DC38628CCB /* Pods-EcoFranca.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcoFranca.debug.xcconfig"; path = "Target Support Files/Pods-EcoFranca/Pods-EcoFranca.debug.xcconfig"; sourceTree = "<group>"; };
+		D2B56972352B40E9B187E07A /* Inter-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Regular.ttf"; path = "../assets/fonts/Inter-Regular.ttf"; sourceTree = "<group>"; };
+		DA49FAABE9E04BE19A860562 /* Inter-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Bold.ttf"; path = "../assets/fonts/Inter-Bold.ttf"; sourceTree = "<group>"; };
+		E124B36C459940E1A18CB252 /* Archivo-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Archivo-SemiBold.ttf"; path = "../assets/fonts/Archivo-SemiBold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		EFF3585A9CDFBC1C801B7DBA /* libPods-EcoFranca.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EcoFranca.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8B4E30E0E87442D684B9B850 /* Archivo-Bold.ttf */ = {isa = PBXFileReference; name = "Archivo-Bold.ttf"; path = "../assets/fonts/Archivo-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		1BD64B152E554BF89B74CB3F /* Archivo-Medium.ttf */ = {isa = PBXFileReference; name = "Archivo-Medium.ttf"; path = "../assets/fonts/Archivo-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		9901AFFC95DD40DD8AA0CB90 /* Archivo-Regular.ttf */ = {isa = PBXFileReference; name = "Archivo-Regular.ttf"; path = "../assets/fonts/Archivo-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		E124B36C459940E1A18CB252 /* Archivo-SemiBold.ttf */ = {isa = PBXFileReference; name = "Archivo-SemiBold.ttf"; path = "../assets/fonts/Archivo-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		DA49FAABE9E04BE19A860562 /* Inter-Bold.ttf */ = {isa = PBXFileReference; name = "Inter-Bold.ttf"; path = "../assets/fonts/Inter-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		14D611BFA6F64DD6A22B7E1C /* Inter-Medium.ttf */ = {isa = PBXFileReference; name = "Inter-Medium.ttf"; path = "../assets/fonts/Inter-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		D2B56972352B40E9B187E07A /* Inter-Regular.ttf */ = {isa = PBXFileReference; name = "Inter-Regular.ttf"; path = "../assets/fonts/Inter-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		5AD0E41E4B174E4E93766F45 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; name = "Inter-SemiBold.ttf"; path = "../assets/fonts/Inter-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +112,21 @@
 			name = EcoFranca;
 			sourceTree = "<group>";
 		};
+		25BA9FCC8DCD4EB1BFFCFCCC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8B4E30E0E87442D684B9B850 /* Archivo-Bold.ttf */,
+				1BD64B152E554BF89B74CB3F /* Archivo-Medium.ttf */,
+				9901AFFC95DD40DD8AA0CB90 /* Archivo-Regular.ttf */,
+				E124B36C459940E1A18CB252 /* Archivo-SemiBold.ttf */,
+				DA49FAABE9E04BE19A860562 /* Inter-Bold.ttf */,
+				14D611BFA6F64DD6A22B7E1C /* Inter-Medium.ttf */,
+				D2B56972352B40E9B187E07A /* Inter-Regular.ttf */,
+				5AD0E41E4B174E4E93766F45 /* Inter-SemiBold.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,25 +177,8 @@
 				18B449BD2E5B8AE233A93FC9 /* Pods-EcoFranca-EcoFrancaTests.debug.xcconfig */,
 				4A0A385C16E236DC8EF9541D /* Pods-EcoFranca-EcoFrancaTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
-		};
-		25BA9FCC8DCD4EB1BFFCFCCC /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				8B4E30E0E87442D684B9B850 /* Archivo-Bold.ttf */,
-				1BD64B152E554BF89B74CB3F /* Archivo-Medium.ttf */,
-				9901AFFC95DD40DD8AA0CB90 /* Archivo-Regular.ttf */,
-				E124B36C459940E1A18CB252 /* Archivo-SemiBold.ttf */,
-				DA49FAABE9E04BE19A860562 /* Inter-Bold.ttf */,
-				14D611BFA6F64DD6A22B7E1C /* Inter-Medium.ttf */,
-				D2B56972352B40E9B187E07A /* Inter-Regular.ttf */,
-				5AD0E41E4B174E4E93766F45 /* Inter-SemiBold.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
