@@ -1,8 +1,8 @@
 const Fonts = {
   Archivo: {
     Regular: 'Archivo-Regular',
-    Medium: '-Medium',
-    SemiBold: '-SemiBold',
+    Medium: 'Archivo-Medium',
+    SemiBold: 'Archivo-SemiBold',
     Bold: 'Archivo-Bold',
   },
   Inter: {
