@@ -5,18 +5,25 @@ import React, {
   forwardRef,
   useState,
   useCallback,
+  useMemo,
 } from 'react';
 import { TextInput as TextInputRN, TextInputProps } from 'react-native';
 
 import { useField } from '@unform/core';
-import { transparentize } from 'polished';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
-import { Container, ErrorText, Icon, TextInput, Wrapper } from './styles';
+import {
+  Container,
+  ErrorText,
+  Icon,
+  IconContainer,
+  TextInput,
+  Wrapper,
+} from './styles';
 
-interface IProps extends TextInputProps {
+interface IProps extends Omit<TextInputProps, 'placeholderTextColor'> {
   name: string;
-  icon: string;
+  icon?: string;
 }
 
 interface IValueReference {
@@ -28,11 +35,9 @@ interface IRef {
 }
 
 const Input: React.ForwardRefRenderFunction<IRef, IProps> = (
-  { name, icon, ...rest },
+  { name, icon, secureTextEntry, ...rest },
   ref,
 ) => {
-  const inputElementRef = useRef<TextInputRN>(null);
-
   const {
     registerField,
     defaultValue = '',
@@ -40,10 +45,13 @@ const Input: React.ForwardRefRenderFunction<IRef, IProps> = (
     error,
     clearError,
   } = useField(name);
+
+  const inputElementRef = useRef<TextInputRN>(null);
   const inputValueRef = useRef<IValueReference>({ value: defaultValue });
 
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
+  const [passwordHidden, setPasswordHidden] = useState(true);
 
   const handleInputFocus = useCallback(() => {
     setIsFocused(true);
@@ -65,6 +73,31 @@ const Input: React.ForwardRefRenderFunction<IRef, IProps> = (
       inputElementRef.current?.focus();
     },
   }));
+
+  const pickedIcon = useMemo(() => {
+    const selectedIcon = secureTextEntry
+      ? passwordHidden
+        ? 'eye-slash'
+        : 'eye'
+      : icon;
+
+    const onPress = secureTextEntry
+      ? () => setPasswordHidden(!passwordHidden)
+      : undefined;
+
+    return (
+      !!selectedIcon && (
+        <IconContainer onPress={onPress}>
+          <Icon
+            name={selectedIcon}
+            size={20}
+            isFocused={isFocused || isFilled}
+            hasError={!!error}
+          />
+        </IconContainer>
+      )
+    );
+  }, [error, icon, isFilled, isFocused, passwordHidden, secureTextEntry]);
 
   useEffect(() => {
     registerField({
@@ -88,7 +121,6 @@ const Input: React.ForwardRefRenderFunction<IRef, IProps> = (
         <TextInput
           ref={inputElementRef}
           hasError={!!error}
-          placeholderTextColor={transparentize(0.6, Colors.black)}
           keyboardAppearance={'dark'}
           defaultValue={defaultValue}
           onFocus={handleInputFocus}
@@ -96,17 +128,11 @@ const Input: React.ForwardRefRenderFunction<IRef, IProps> = (
           onChangeText={(value) => {
             inputValueRef.current.value = value;
           }}
+          secureTextEntry={secureTextEntry && passwordHidden}
           {...rest}
         />
 
-        {!!icon && (
-          <Icon
-            name={icon}
-            size={20}
-            isFocused={isFocused || isFilled}
-            hasError={!!error}
-          />
-        )}
+        {pickedIcon}
       </Wrapper>
 
       {!!error && <ErrorText>{error}</ErrorText>}

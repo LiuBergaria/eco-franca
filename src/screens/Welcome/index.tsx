@@ -31,7 +31,7 @@ const Welcome = (): JSX.Element => {
 
           <StyledButton
             title={'Entrar'}
-            onPress={() => navigation.navigate('Home')}
+            onPress={() => navigation.navigate('Login')}
           />
           <StyledButton title={'Criar conta'} colorStyle={'lightTeal'} />
         </ActionsContainer>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { TextProps, TouchableOpacityProps } from 'react-native';
 
+import { useTheme } from 'src/contexts/theme';
 import Colors from 'src/styles/Colors';
 
 import { Container, Title } from './styles';
@@ -15,7 +16,10 @@ const textColorMap = {
   teal: Colors.white,
   lightTeal: Colors.white,
   red: Colors.white,
-  transparent: Colors.black,
+  transparent: {
+    light: Colors.black,
+    dark: Colors.white,
+  },
 };
 
 const Button = ({
@@ -24,8 +28,13 @@ const Button = ({
   textStyles,
   ...props
 }: IProps): JSX.Element => {
+  const { theme } = useTheme();
+
   const color = Colors[colorStyle];
-  const textColor = textColorMap[colorStyle];
+  const textColor =
+    colorStyle === 'transparent'
+      ? textColorMap[colorStyle][theme]
+      : textColorMap[colorStyle];
 
   return (
     <Container activeOpacity={0.75} {...props} color={color}>

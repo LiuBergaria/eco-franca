@@ -17,6 +17,8 @@ interface IIconProps {
 export const Container = styled.View`
   width: 100%;
   justify-content: center;
+
+  margin-bottom: 8px;
 `;
 
 export const Wrapper = styled.View`
@@ -24,11 +26,13 @@ export const Wrapper = styled.View`
   justify-content: center;
 `;
 
+export const IconContainer = styled.TouchableWithoutFeedback``;
+
 export const Icon = styled(FontAwesome5Icon)<IIconProps>`
   position: absolute;
   right: 12px;
 
-  color: ${transparentize(0.6, Colors.black)};
+  color: ${({ theme }) => transparentize(0.6, theme.foreground)};
 
   ${({ hasError }) =>
     hasError &&
@@ -43,8 +47,12 @@ export const Icon = styled(FontAwesome5Icon)<IIconProps>`
     `}
 `;
 
-export const TextInput = styled.TextInput<ITextInputProps>`
-  background-color: ${transparentize(0.95, Colors.black)};
+export const TextInput = styled.TextInput.attrs(({ theme }) => ({
+  placeholderTextColor: transparentize(0.6, theme.foreground),
+}))<ITextInputProps>`
+  background-color: ${({ theme }) => transparentize(0.85, theme.foreground)};
+
+  color: ${({ theme }) => theme.foreground};
 
   padding: 12px;
   width: 100%;
