@@ -17,11 +17,11 @@ export const FirstSquare = styled(Animated.View)`
 
   opacity: 0.1;
 
-  width: ${windowSize.width};
-  height: ${windowSize.height * 0.5};
+  width: ${windowSize.width}px;
+  height: ${windowSize.height * 0.5}px;
 
-  left: ${-windowSize.width * 0.55};
-  top: ${-windowSize.height * 0.05};
+  left: ${-windowSize.width * 0.55}px;
+  top: ${-windowSize.height * 0.05}px;
 
   border-radius: 32px;
 `;
@@ -32,11 +32,11 @@ export const SecondSquare = styled(Animated.View)`
 
   opacity: 0.1;
 
-  width: ${windowSize.width * 0.85};
-  height: ${windowSize.height * 0.35};
+  width: ${windowSize.width * 0.85}px;
+  height: ${windowSize.height * 0.35}px;
 
-  right: ${-windowSize.width * 0.2};
-  bottom: ${-windowSize.height * 0.1};
+  right: ${-windowSize.width * 0.2}px;
+  bottom: ${-windowSize.height * 0.1}px;
 
   border-radius: 32px;
 `;

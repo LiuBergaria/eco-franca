@@ -1,17 +1,54 @@
 import React from 'react';
 
-import { createStackNavigator } from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  StackNavigationOptions,
+} from '@react-navigation/stack';
 
+import Home from './screens/Home';
 import Login from './screens/Login';
 import Welcome from './screens/Welcome';
 
 const Stack = createStackNavigator();
 
+const screenOptions: StackNavigationOptions = {
+  transitionSpec: {
+    open: {
+      config: { duration: 550 },
+      animation: 'timing',
+    },
+    close: {
+      config: { duration: 550 },
+      animation: 'timing',
+    },
+  },
+  cardStyleInterpolator: ({ current, next, layouts }) => {
+    const item = next ?? current;
+    const outputRange = next
+      ? [0, -layouts.screen.width * 1.1]
+      : [layouts.screen.width * 1.1, 0];
+
+    return {
+      cardStyle: {
+        transform: [
+          {
+            translateX: item.progress.interpolate({
+              inputRange: [0, 1],
+              outputRange,
+            }),
+          },
+        ],
+      },
+    };
+  },
+};
+
 const Routes = (): JSX.Element => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen name={'Welcome'} component={Welcome} />
       <Stack.Screen name={'Login'} component={Login} />
+      <Stack.Screen name={'Home'} component={Home} />
     </Stack.Navigator>
   );
 };

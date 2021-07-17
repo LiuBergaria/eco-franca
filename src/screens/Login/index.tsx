@@ -1,7 +1,10 @@
 import React from 'react';
 
+import { useNavigation } from '@react-navigation/native';
+
 import Button from 'src/components/Button';
 import Input from 'src/components/Input';
+import Emitter, { EventTypes } from 'src/utils/Emitter';
 
 import {
   Container,
@@ -13,6 +16,8 @@ import {
 } from './styles';
 
 const Login = (): JSX.Element => {
+  const navigation = useNavigation();
+
   return (
     <Container>
       <Wrapper>
@@ -36,7 +41,13 @@ const Login = (): JSX.Element => {
             icon={'eye'}
           />
 
-          <Button title={'Entrar'} onPress={() => {}} />
+          <Button
+            title={'Entrar'}
+            onPress={() => {
+              Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
+              navigation.navigate('Home');
+            }}
+          />
           <Button
             title={'Esqueci minha senha'}
             colorStyle={'transparent'}

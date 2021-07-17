@@ -14,7 +14,7 @@ const AnimatedBackground = (): JSX.Element => {
     (toValue: number, callback?: () => void): void => {
       Animated.timing(anim, {
         toValue: toValue,
-        duration: 1500,
+        duration: 400,
         useNativeDriver: true,
       }).start(callback);
     },
@@ -39,13 +39,13 @@ const AnimatedBackground = (): JSX.Element => {
         {
           translateX: anim.interpolate({
             inputRange: [0, 1],
-            outputRange: [-windowSize.width, 0],
+            outputRange: [-windowSize.width / 2, 0],
           }),
         },
         {
           rotate: anim.interpolate({
-            inputRange: [0, 0.5, 1],
-            outputRange: ['0deg', '0deg', '55deg'],
+            inputRange: [0, 1],
+            outputRange: ['0deg', '55deg'],
           }),
         },
       ],

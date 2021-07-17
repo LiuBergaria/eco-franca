@@ -2,6 +2,8 @@ import React from 'react';
 
 import { useNavigation } from '@react-navigation/native';
 
+import Emitter, { EventTypes } from 'src/utils/Emitter';
+
 import {
   Container,
   Title,
@@ -31,7 +33,10 @@ const Welcome = (): JSX.Element => {
 
           <StyledButton
             title={'Entrar'}
-            onPress={() => navigation.navigate('Login')}
+            onPress={() => {
+              Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
+              navigation.navigate('Login');
+            }}
           />
           <StyledButton title={'Criar conta'} colorStyle={'lightTeal'} />
         </ActionsContainer>
