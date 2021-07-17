@@ -9,13 +9,12 @@ export const Container = styled.View`
   height: 100%;
 
   position: absolute;
+  background-color: ${({ theme }) => theme.background};
 `;
 
 export const FirstSquare = styled(Animated.View)`
   position: absolute;
-  background-color: #00adb5;
-
-  opacity: 0.1;
+  background-color: ${({ theme }) => theme.animatedSquare};
 
   width: ${windowSize.width}px;
   height: ${windowSize.height * 0.5}px;
@@ -28,9 +27,7 @@ export const FirstSquare = styled(Animated.View)`
 
 export const SecondSquare = styled(Animated.View)`
   position: absolute;
-  background-color: #00adb5;
-
-  opacity: 0.1;
+  background-color: ${({ theme }) => theme.animatedSquare};
 
   width: ${windowSize.width * 0.85}px;
   height: ${windowSize.height * 0.35}px;
