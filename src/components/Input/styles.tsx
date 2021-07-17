@@ -50,7 +50,7 @@ export const Icon = styled(FontAwesome5Icon)<IIconProps>`
 export const TextInput = styled.TextInput.attrs(({ theme }) => ({
   placeholderTextColor: transparentize(0.6, theme.foreground),
 }))<ITextInputProps>`
-  background-color: ${({ theme }) => transparentize(0.85, theme.foreground)};
+  background-color: ${({ theme }) => transparentize(0.95, theme.foreground)};
 
   color: ${({ theme }) => theme.foreground};
 
