@@ -1,8 +1,11 @@
 import React from 'react';
 
+import { useNavigation } from '@react-navigation/native';
+
 import OccurrenceCard from 'src/components/OccurenceCard';
 import OccurrenceStatus from 'src/enums/OccurrenceStatus';
 import OccurrenceTypes from 'src/enums/OccurrenceTypes';
+import Emitter, { EventTypes } from 'src/utils/Emitter';
 
 import { Container, List, Title } from './styles';
 
@@ -37,6 +40,7 @@ const data = [
 ];
 
 const MyOccurrences = (): JSX.Element => {
+  const navigation = useNavigation();
   return (
     <Container>
       <Title>Minhas ocorrências</Title>
@@ -45,7 +49,14 @@ const MyOccurrences = (): JSX.Element => {
         data={data}
         keyExtractor={(item) => item.id}
         renderItem={(item) => (
-          <OccurrenceCard data={item.item} lightStyle={item.index % 2 === 0} />
+          <OccurrenceCard
+            data={item.item}
+            lightStyle={item.index % 2 === 0}
+            onPress={() => {
+              Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
+              navigation.navigate('ShowOccurrence', { id: item.item.id });
+            }}
+          />
         )}
       />
     </Container>

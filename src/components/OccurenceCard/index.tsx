@@ -2,6 +2,7 @@ import React from 'react';
 
 import { format } from 'date-fns';
 
+import OccurrenceStatus from 'src/enums/OccurrenceStatus';
 import OccurrenceTypes from 'src/enums/OccurrenceTypes';
 import getOccurrenceStatusInformation from 'src/utils/getOccurrenceStatusInformation';
 import getOccurrenceTypeInformation from 'src/utils/getOccurrenceTypeInformation';
@@ -25,10 +26,11 @@ interface IProps {
     newNotification: boolean;
     number?: string;
     violationNumber?: string;
-    status: string;
+    status: OccurrenceStatus;
     datetime: Date;
   };
   lightStyle?: boolean;
+  onPress?: () => void;
 }
 
 const OccurrenceCard = ({
@@ -41,13 +43,18 @@ const OccurrenceCard = ({
     datetime,
   },
   lightStyle,
+  onPress,
 }: IProps): JSX.Element => {
   const { title, icon } = getOccurrenceTypeInformation(category);
 
   const { title: statusTitle } = getOccurrenceStatusInformation(status);
 
   return (
-    <Container lightStyle={lightStyle}>
+    <Container
+      activeOpacity={onPress ? 0.8 : 1}
+      lightStyle={lightStyle}
+      onPress={onPress}
+    >
       <Row>
         <FieldValue lightStyle={lightStyle}>{title}</FieldValue>
 

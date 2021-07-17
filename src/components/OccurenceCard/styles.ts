@@ -12,7 +12,7 @@ interface IRightProps {
   right?: boolean;
 }
 
-export const Container = styled.View<IProps>`
+export const Container = styled.TouchableOpacity<IProps>`
   background-color: ${({ lightStyle }) =>
     lightStyle ? Colors.lightTeal : Colors.teal};
 
