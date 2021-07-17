@@ -12,7 +12,11 @@ import {
   StepText,
 } from './styles';
 
-const ViolatorInformations = (): JSX.Element => {
+interface IProps {
+  onNext: () => void;
+}
+
+const ViolatorInformations = ({ onNext }: IProps): JSX.Element => {
   const [selectedOption, setSelectedOption] = useState<number | undefined>(
     undefined,
   );
@@ -60,7 +64,9 @@ const ViolatorInformations = (): JSX.Element => {
         </FormContainer>
       )}
 
-      {selectedOption !== undefined && <Button title={'Finalizar'} />}
+      {selectedOption !== undefined && (
+        <Button title={'Finalizar'} onPress={onNext} />
+      )}
     </Container>
   );
 };

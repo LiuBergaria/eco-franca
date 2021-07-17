@@ -24,11 +24,7 @@ const RecordOccurrence = (): JSX.Element => {
   }, []);
 
   useEffect(() => {
-    if (currentPage === 4) {
-      navigation.navigate('CreateAccountSuccess');
-    } else {
-      scrollTo(currentPage);
-    }
+    scrollTo(currentPage);
   }, [scrollTo, currentPage, navigation]);
 
   return (
@@ -46,8 +42,8 @@ const RecordOccurrence = (): JSX.Element => {
         <SelectProblem onNext={() => setCurrentPage(currentPage + 1)} />
         <PickAddressType onNext={() => setCurrentPage(currentPage + 1)} />
         <PickAddress onNext={() => setCurrentPage(currentPage + 1)} />
-        <Informations />
-        <ViolatorInformations />
+        <Informations onNext={() => setCurrentPage(currentPage + 1)} />
+        <ViolatorInformations onNext={() => setCurrentPage(currentPage + 1)} />
       </HorizontalScroll>
     </Container>
   );

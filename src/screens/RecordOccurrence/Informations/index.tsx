@@ -4,7 +4,11 @@ import Button from 'src/components/Button';
 
 import { Container, FormContainer, ObservationInput, StepText } from './styles';
 
-const Informations = (): JSX.Element => {
+interface IProps {
+  onNext: () => void;
+}
+
+const Informations = ({ onNext }: IProps): JSX.Element => {
   return (
     <Container>
       <StepText>
@@ -21,7 +25,7 @@ const Informations = (): JSX.Element => {
         />
       </FormContainer>
 
-      <Button title={'Próximo'} />
+      <Button title={'Próximo'} onPress={onNext} />
     </Container>
   );
 };
