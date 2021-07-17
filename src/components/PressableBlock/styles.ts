@@ -19,6 +19,7 @@ export const Container = styled.TouchableOpacity<IContainer>`
   flex-grow: 1;
   height: 140px;
   padding: 24px;
+  margin-bottom: 16px;
   border-radius: 4px;
 
   flex-direction: ${({ isRow }) => (isRow ? 'row' : 'column-reverse')};
