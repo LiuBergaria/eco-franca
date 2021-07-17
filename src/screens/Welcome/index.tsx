@@ -38,7 +38,14 @@ const Welcome = (): JSX.Element => {
               navigation.navigate('Login');
             }}
           />
-          <StyledButton title={'Criar conta'} colorStyle={'lightTeal'} />
+          <StyledButton
+            title={'Criar conta'}
+            colorStyle={'lightTeal'}
+            onPress={() => {
+              Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
+              navigation.navigate('CreateAccount');
+            }}
+          />
         </ActionsContainer>
       </Wrapper>
     </Container>

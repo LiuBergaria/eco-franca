@@ -5,6 +5,8 @@ import {
   StackNavigationOptions,
 } from '@react-navigation/stack';
 
+import CreateAccount from './screens/CreateAccount';
+import CreateAccountSuccess from './screens/CreateAccountSuccess';
 import Home from './screens/Home';
 import Login from './screens/Login';
 import Welcome from './screens/Welcome';
@@ -48,6 +50,11 @@ const Routes = (): JSX.Element => {
     <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen name={'Welcome'} component={Welcome} />
       <Stack.Screen name={'Login'} component={Login} />
+      <Stack.Screen name={'CreateAccount'} component={CreateAccount} />
+      <Stack.Screen
+        name={'CreateAccountSuccess'}
+        component={CreateAccountSuccess}
+      />
       <Stack.Screen name={'Home'} component={Home} />
     </Stack.Navigator>
   );
