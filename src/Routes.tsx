@@ -9,6 +9,7 @@ import CreateAccount from './screens/CreateAccount';
 import CreateAccountSuccess from './screens/CreateAccountSuccess';
 import Home from './screens/Home';
 import Login from './screens/Login';
+import RecordOccurrence from './screens/RecordOccurrence';
 import Welcome from './screens/Welcome';
 
 const Stack = createStackNavigator();
@@ -56,6 +57,7 @@ const Routes = (): JSX.Element => {
         component={CreateAccountSuccess}
       />
       <Stack.Screen name={'Home'} component={Home} />
+      <Stack.Screen name={'RecordOccurrence'} component={RecordOccurrence} />
     </Stack.Navigator>
   );
 };

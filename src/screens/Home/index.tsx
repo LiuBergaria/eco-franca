@@ -1,11 +1,16 @@
 import React from 'react';
 
+import { useNavigation } from '@react-navigation/native';
+
 import NotificationBadger from 'src/components/NotificationBadger';
 import PressableBlock from 'src/components/PressableBlock';
+import Emitter, { EventTypes } from 'src/utils/Emitter';
 
 import { Container, ItemsContainer, SizedLogo, Wrapper } from './styles';
 
 const Home = (): JSX.Element => {
+  const navigation = useNavigation();
+
   return (
     <Container>
       <Wrapper>
@@ -16,6 +21,10 @@ const Home = (): JSX.Element => {
             title={'Registrar\nOcorrência'}
             icon={'pen-alt'}
             lightStyle={true}
+            onPress={() => {
+              Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
+              navigation.navigate('RecordOccurrence');
+            }}
           />
           <PressableBlock
             title={'Visualizar\nOcorrências'}

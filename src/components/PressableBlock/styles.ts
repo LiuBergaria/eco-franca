@@ -36,6 +36,7 @@ export const Title = styled.Text<ITitle>`
     !isRow &&
     css`
       margin-top: 8px;
+      text-align: center;
     `}
 `;
 
