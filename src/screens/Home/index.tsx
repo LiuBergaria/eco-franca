@@ -30,6 +30,10 @@ const Home = (): JSX.Element => {
             title={'Visualizar\nOcorrências'}
             icon={'book-open'}
             floatElement={<NotificationBadger text={'3'} />}
+            onPress={() => {
+              Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
+              navigation.navigate('MyOccurrences');
+            }}
           />
           <PressableBlock
             title={'Minha\nConta'}
