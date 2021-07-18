@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Button from 'src/components/Button';
+import { useTheme } from 'src/contexts/theme';
 
 import {
   Container,
@@ -20,6 +21,8 @@ const informations = {
 };
 
 const MyAccount = (): JSX.Element => {
+  const { theme, toggleTheme } = useTheme();
+
   return (
     <Container>
       <Title>Minha conta</Title>
@@ -51,6 +54,12 @@ const MyAccount = (): JSX.Element => {
           </FieldContainer>
         </Row>
       </InformationsContainer>
+
+      <Button
+        title={'Alternar para modo ' + (theme === 'light' ? 'escuro' : 'claro')}
+        colorStyle={'teal'}
+        onPress={toggleTheme}
+      />
 
       <Button title={'Sair'} colorStyle={'red'} />
     </Container>

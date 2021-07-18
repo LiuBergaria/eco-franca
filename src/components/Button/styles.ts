@@ -12,8 +12,12 @@ interface ITitleProps {
 
 export const Container = styled.TouchableOpacity<IContainerProps>`
   width: 100%;
-  background-color: ${({ color }) => color};
+
   padding: 12px;
+  margin-bottom: 16px;
+
+  background-color: ${({ color }) => color};
+
   border-radius: 4px;
 `;
 
