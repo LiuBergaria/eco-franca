@@ -39,6 +39,10 @@ const Home = (): JSX.Element => {
             title={'Minha\nConta'}
             icon={'smile'}
             lightStyle={true}
+            onPress={() => {
+              Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
+              navigation.navigate('MyAccount');
+            }}
           />
         </ItemsContainer>
       </Wrapper>

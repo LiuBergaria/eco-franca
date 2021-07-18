@@ -10,6 +10,7 @@ import CreateAccount from './screens/CreateAccount';
 import CreateAccountSuccess from './screens/CreateAccountSuccess';
 import Home from './screens/Home';
 import Login from './screens/Login';
+import MyAccount from './screens/MyAccount';
 import MyOccurrences from './screens/MyOccurrences';
 import RecordOccurrence from './screens/RecordOccurrence';
 import ShowOccurrence from './screens/ShowOccurrence';
@@ -68,6 +69,7 @@ const Routes = (): JSX.Element => {
       <Stack.Screen name={'RecordOccurrence'} component={RecordOccurrence} />
       <Stack.Screen name={'MyOccurrences'} component={MyOccurrences} />
       <Stack.Screen name={'ShowOccurrence'} component={ShowOccurrence} />
+      <Stack.Screen name={'MyAccount'} component={MyAccount} />
     </Stack.Navigator>
   );
 };
