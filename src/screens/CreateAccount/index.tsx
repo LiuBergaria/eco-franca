@@ -1,8 +1,9 @@
 import React, { useRef, useCallback, useState, useEffect } from 'react';
-import { ScrollView, Dimensions, ActivityIndicator } from 'react-native';
+import { ScrollView, Dimensions } from 'react-native';
 
 import { StackActions, useNavigation } from '@react-navigation/native';
 
+import { useHeader } from 'src/contexts/header';
 import api from 'src/services/api';
 
 import CPFSectionBlock from './CPFSectionBlock';
@@ -27,6 +28,7 @@ const CreateAccount = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState(false);
 
   const navigation = useNavigation();
+  const { addGoBackCallback, resetGoBackCallback } = useHeader();
 
   const scrollTo = useCallback((page: number) => {
     scrollRef.current?.scrollTo({
@@ -36,7 +38,17 @@ const CreateAccount = (): JSX.Element => {
 
   useEffect(() => {
     scrollTo(currentPage);
-  }, [scrollTo, currentPage, navigation]);
+
+    if (currentPage === 1) {
+      resetGoBackCallback();
+    } else {
+      const goBack = (): void => {
+        setCurrentPage(currentPage - 1);
+      };
+
+      addGoBackCallback(goBack);
+    }
+  }, [scrollTo, currentPage, resetGoBackCallback, addGoBackCallback]);
 
   const createUser = async (): Promise<void> => {
     setIsLoading(true);
