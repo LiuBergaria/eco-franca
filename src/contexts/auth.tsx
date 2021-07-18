@@ -8,6 +8,7 @@ import React, {
 } from 'react';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import SplashScreen from 'react-native-splash-screen';
 
 import api from '../services/api';
 
@@ -52,6 +53,7 @@ export const AuthProvider: React.FC = ({ children }) => {
       }
 
       setIsLoaded(true);
+      setTimeout(SplashScreen.hide, 600);
     }
 
     loadStorageData();
