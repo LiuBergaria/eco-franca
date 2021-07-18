@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useNavigation } from '@react-navigation/native';
+import { StackActions, useNavigation } from '@react-navigation/native';
 
 import Button from 'src/components/Button';
 import Emitter, { EventTypes } from 'src/utils/Emitter';
@@ -25,6 +25,7 @@ const CreateAccountSuccess = (): JSX.Element => {
       <Button
         title={'Ir para login'}
         onPress={() => {
+          navigation.dispatch(StackActions.pop(1));
           Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
           navigation.navigate('Login');
         }}

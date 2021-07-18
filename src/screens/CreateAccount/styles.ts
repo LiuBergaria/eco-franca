@@ -1,3 +1,5 @@
+import { ActivityIndicator } from 'react-native';
+
 import styled from 'styled-components/native';
 
 import Colors from 'src/styles/Colors';
@@ -36,3 +38,25 @@ export const Subtitle = styled.Text`
 `;
 
 export const HorizontalScroll = styled.ScrollView``;
+
+export const LoaderContainer = styled.View`
+  margin-top: 32px;
+
+  align-items: center;
+`;
+
+export const LoaderText = styled.Text`
+  margin-top: 32px;
+
+  text-align: center;
+
+  font-family: ${Fonts.Inter.Medium};
+  font-size: 16px;
+
+  color: ${({ theme }) => theme.foreground};
+`;
+
+export const Loader = styled(ActivityIndicator).attrs(({ theme }) => ({
+  size: 'large',
+  color: theme.foreground,
+}))``;
