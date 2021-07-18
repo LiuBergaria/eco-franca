@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef } from 'react';
-import { Animated, Dimensions } from 'react-native';
+import { Animated, Dimensions, Easing } from 'react-native';
 
 import Emitter, { EventTypes } from 'src/utils/Emitter';
 
@@ -14,8 +14,9 @@ const AnimatedBackground = (): JSX.Element => {
     (toValue: number, callback?: () => void): void => {
       Animated.timing(anim, {
         toValue: toValue,
-        duration: 400,
-        useNativeDriver: true,
+        duration: 450,
+        easing: Easing.circle,
+        useNativeDriver: false,
       }).start(callback);
     },
     [anim],

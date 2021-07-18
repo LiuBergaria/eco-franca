@@ -21,11 +21,11 @@ const Stack = createStackNavigator();
 const screenOptions: StackNavigationOptions = {
   transitionSpec: {
     open: {
-      config: { duration: 550 },
+      config: { duration: 450 },
       animation: 'timing',
     },
     close: {
-      config: { duration: 550 },
+      config: { duration: 450 },
       animation: 'timing',
     },
   },
