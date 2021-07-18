@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import Button from 'src/components/Button';
+import { useAuth } from 'src/contexts/auth';
 import { useTheme } from 'src/contexts/theme';
 
 import {
@@ -22,6 +23,11 @@ const informations = {
 
 const MyAccount = (): JSX.Element => {
   const { theme, toggleTheme } = useTheme();
+  const { signOut } = useAuth();
+
+  const logout = useCallback(() => {
+    signOut();
+  }, [signOut]);
 
   return (
     <Container>
@@ -61,7 +67,7 @@ const MyAccount = (): JSX.Element => {
         onPress={toggleTheme}
       />
 
-      <Button title={'Sair'} colorStyle={'red'} />
+      <Button title={'Sair'} colorStyle={'red'} onPress={logout} />
     </Container>
   );
 };

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useRef, useCallback, useState } from 'react';
 
 import { useNavigation } from '@react-navigation/native';
+import { FormHandles, SubmitHandler } from '@unform/core';
 
 import Button from 'src/components/Button';
 import Input from 'src/components/Input';
+import { useAuth } from 'src/contexts/auth';
+import api from 'src/services/api';
 import Emitter, { EventTypes } from 'src/utils/Emitter';
 
 import {
@@ -15,8 +18,50 @@ import {
   StepText,
 } from './styles';
 
+interface IData {
+  cpf: string;
+  password: string;
+}
 const Login = (): JSX.Element => {
+  const formRef = useRef<FormHandles>(null);
+
   const navigation = useNavigation();
+  const { signIn } = useAuth();
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const submit: SubmitHandler<IData> = useCallback(
+    async (data) => {
+      setIsLoading(true);
+
+      const response = await api.post('/citizen/login', data);
+
+      setTimeout(() => {
+        if (response.status === 403) {
+          formRef.current?.setErrors({
+            cpf: 'Por favor, confirme seu e-mail para acessar',
+          });
+        } else if (response.status === 404) {
+          formRef.current?.setErrors({
+            cpf: 'CPF e/ou senha incorretos',
+          });
+        } else if (response.status === 200) {
+          signIn({
+            token: response.data.token,
+            user: {
+              first_name: response.data.first_name,
+              last_name: response.data.last_name,
+            },
+          });
+
+          Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
+          navigation.navigate('Home');
+        }
+        setIsLoading(false);
+      }, 2000);
+    },
+    [navigation, signIn],
+  );
 
   return (
     <Container>
@@ -30,28 +75,34 @@ const Login = (): JSX.Element => {
           suas ocorrências
         </Subtitle>
 
-        <FormContainer onSubmit={() => {}}>
+        <FormContainer ref={formRef} onSubmit={submit}>
           <StepText>Informe seu CPF e senha</StepText>
 
-          <Input placeholder={'000.000.000-00'} name={'cpf'} icon={'user'} />
+          <Input
+            placeholder={'000.000.000-00'}
+            name={'cpf'}
+            icon={'user'}
+            editable={!isLoading}
+          />
           <Input
             placeholder={'Senha'}
             name={'password'}
             secureTextEntry={true}
             icon={'eye'}
+            editable={!isLoading}
           />
 
           <Button
             title={'Entrar'}
             onPress={() => {
-              Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
-              navigation.navigate('Home');
+              formRef.current?.submitForm();
             }}
+            isLoading={isLoading}
           />
           <Button
             title={'Esqueci minha senha'}
             colorStyle={'transparent'}
-            onPress={() => {}}
+            disabled={isLoading}
           />
         </FormContainer>
       </Wrapper>
