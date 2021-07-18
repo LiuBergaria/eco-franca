@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 
+import { useHeader } from 'src/contexts/header';
 import Emitter, { EventTypes } from 'src/utils/Emitter';
 
 import {
@@ -17,6 +18,13 @@ import {
 
 const Welcome = (): JSX.Element => {
   const navigation = useNavigation();
+  const { setShowLogo } = useHeader();
+
+  useFocusEffect(() => {
+    setShowLogo(false);
+
+    return () => setShowLogo(true);
+  });
 
   return (
     <Container>

@@ -1,4 +1,5 @@
-import React, { useMemo, useCallback } from 'react';
+import React, { useRef, useEffect } from 'react';
+import { Animated } from 'react-native';
 
 import { StackHeaderProps } from '@react-navigation/stack';
 
@@ -14,10 +15,22 @@ import {
 } from './styles';
 
 const Header = (props: StackHeaderProps): JSX.Element => {
-  const { goBackCallback } = useHeader();
+  const { goBackCallback, showLogo } = useHeader();
+
+  const logoShowAnim = useRef(new Animated.Value(0));
 
   const hasBackButton = goBackCallback || props.navigation.canGoBack();
   const goBack = goBackCallback ?? props.navigation.goBack;
+
+  useEffect(() => {
+    const toValue = Number(showLogo);
+
+    Animated.timing(logoShowAnim.current, {
+      toValue,
+      duration: 700,
+      useNativeDriver: true,
+    }).start();
+  }, [showLogo]);
 
   return (
     <Container>
@@ -30,7 +43,16 @@ const Header = (props: StackHeaderProps): JSX.Element => {
 
       <DummyBlock />
 
-      <SizedLogo />
+      <Animated.View
+        style={{
+          opacity: logoShowAnim.current.interpolate({
+            inputRange: [0, 1],
+            outputRange: [0, 1],
+          }),
+        }}
+      >
+        <SizedLogo />
+      </Animated.View>
     </Container>
   );
 };

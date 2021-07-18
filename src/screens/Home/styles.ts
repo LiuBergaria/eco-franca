@@ -1,7 +1,5 @@
 import styled from 'styled-components/native';
 
-import Logo from 'src/components/Logo';
-
 export const Container = styled.View`
   flex: 1;
 
@@ -18,11 +16,6 @@ export const Wrapper = styled.ScrollView.attrs({
 
   width: 100%;
   padding: 24px;
-`;
-
-export const SizedLogo = styled(Logo)`
-  width: 32%;
-  margin-bottom: 32px;
 `;
 
 export const ItemsContainer = styled.View`

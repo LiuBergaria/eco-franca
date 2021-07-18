@@ -4,6 +4,8 @@ interface IHeaderContextData {
   goBackCallback?: () => void;
   addGoBackCallback(callback: () => void): void;
   resetGoBackCallback(): void;
+  showLogo: boolean;
+  setShowLogo: (value: boolean) => void;
 }
 
 const HeaderContext = createContext<IHeaderContextData>(
@@ -16,6 +18,7 @@ interface IGoBack {
 
 export const HeaderProvider: React.FC = ({ children }) => {
   const [goBack, setGoBack] = useState<IGoBack>({ callback: undefined });
+  const [showLogo, setShowLogo] = useState(true);
 
   const addGoBackCallback = useCallback((callback: () => void) => {
     setGoBack({ callback });
@@ -31,6 +34,8 @@ export const HeaderProvider: React.FC = ({ children }) => {
         goBackCallback: goBack.callback,
         addGoBackCallback,
         resetGoBackCallback,
+        showLogo,
+        setShowLogo,
       }}
     >
       {children}

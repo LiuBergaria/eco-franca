@@ -6,7 +6,7 @@ import NotificationBadger from 'src/components/NotificationBadger';
 import PressableBlock from 'src/components/PressableBlock';
 import Emitter, { EventTypes } from 'src/utils/Emitter';
 
-import { Container, ItemsContainer, SizedLogo, Wrapper } from './styles';
+import { Container, ItemsContainer, Wrapper } from './styles';
 
 const Home = (): JSX.Element => {
   const navigation = useNavigation();
@@ -14,8 +14,6 @@ const Home = (): JSX.Element => {
   return (
     <Container>
       <Wrapper>
-        <SizedLogo />
-
         <ItemsContainer>
           <PressableBlock
             title={'Registrar\nOcorrência'}
