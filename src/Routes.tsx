@@ -6,6 +6,7 @@ import {
 } from '@react-navigation/stack';
 
 import Header from './components/Header';
+import { useAuth } from './contexts/auth';
 import CreateAccount from './screens/CreateAccount';
 import CreateAccountSuccess from './screens/CreateAccountSuccess';
 import Home from './screens/Home';
@@ -50,7 +51,9 @@ const screenOptions: StackNavigationOptions = {
   },
 };
 
-const Routes = (): JSX.Element => {
+const Routes = (): JSX.Element | null => {
+  const { isAuthenticated } = useAuth();
+
   return (
     <Stack.Navigator
       screenOptions={{
@@ -58,18 +61,28 @@ const Routes = (): JSX.Element => {
         header: (props) => <Header {...props} />,
       }}
     >
-      <Stack.Screen name={'Welcome'} component={Welcome} />
-      <Stack.Screen name={'Login'} component={Login} />
-      <Stack.Screen name={'CreateAccount'} component={CreateAccount} />
-      <Stack.Screen
-        name={'CreateAccountSuccess'}
-        component={CreateAccountSuccess}
-      />
-      <Stack.Screen name={'Home'} component={Home} />
-      <Stack.Screen name={'RecordOccurrence'} component={RecordOccurrence} />
-      <Stack.Screen name={'MyOccurrences'} component={MyOccurrences} />
-      <Stack.Screen name={'ShowOccurrence'} component={ShowOccurrence} />
-      <Stack.Screen name={'MyAccount'} component={MyAccount} />
+      {!isAuthenticated ? (
+        <>
+          <Stack.Screen name={'Welcome'} component={Welcome} />
+          <Stack.Screen name={'Login'} component={Login} />
+          <Stack.Screen name={'CreateAccount'} component={CreateAccount} />
+          <Stack.Screen
+            name={'CreateAccountSuccess'}
+            component={CreateAccountSuccess}
+          />
+        </>
+      ) : (
+        <>
+          <Stack.Screen name={'Home'} component={Home} />
+          <Stack.Screen
+            name={'RecordOccurrence'}
+            component={RecordOccurrence}
+          />
+          <Stack.Screen name={'MyOccurrences'} component={MyOccurrences} />
+          <Stack.Screen name={'ShowOccurrence'} component={ShowOccurrence} />
+          <Stack.Screen name={'MyAccount'} component={MyAccount} />
+        </>
+      )}
     </Stack.Navigator>
   );
 };
