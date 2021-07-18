@@ -51,6 +51,9 @@ const Login = (): JSX.Element => {
             user: {
               first_name: response.data.first_name,
               last_name: response.data.last_name,
+              cpf: response.data.cpf,
+              phone_number: response.data.phone_number,
+              email: response.data.email,
             },
           });
 
@@ -79,10 +82,12 @@ const Login = (): JSX.Element => {
           <StepText>Informe seu CPF e senha</StepText>
 
           <Input
-            placeholder={'000.000.000-00'}
+            placeholder={'CPF (sem pontuação)'}
             name={'cpf'}
             icon={'user'}
             editable={!isLoading}
+            keyboardType={'numeric'}
+            maxLength={11}
           />
           <Input
             placeholder={'Senha'}
@@ -90,6 +95,8 @@ const Login = (): JSX.Element => {
             secureTextEntry={true}
             icon={'eye'}
             editable={!isLoading}
+            autoCompleteType={'password'}
+            autoCapitalize={'none'}
           />
 
           <Button

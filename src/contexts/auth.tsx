@@ -15,15 +15,21 @@ import api from '../services/api';
 interface IAuthState {
   token: string;
   user: {
-    first_name: number;
+    first_name: string;
     last_name: string;
+    cpf: string;
+    phone_number: string;
+    email: string;
   };
 }
 
 interface IAuthContextData {
   user: {
-    first_name: number;
+    first_name: string;
     last_name: string;
+    cpf: string;
+    phone_number: string;
+    email: string;
   };
   signIn(informations: IAuthState): Promise<void>;
   signOut(): Promise<void>;

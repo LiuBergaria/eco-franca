@@ -14,16 +14,9 @@ import {
   Title,
 } from './styles';
 
-const informations = {
-  name: 'Artur Silvestre de Oliveira',
-  document: '123.456.789-10',
-  whatsapp: '16 99211-1235',
-  email: 'artuzinho@hotmail.com',
-};
-
 const MyAccount = (): JSX.Element => {
   const { theme, toggleTheme } = useTheme();
-  const { signOut } = useAuth();
+  const { user, signOut } = useAuth();
 
   const logout = useCallback(() => {
     signOut();
@@ -37,26 +30,26 @@ const MyAccount = (): JSX.Element => {
         <Row>
           <FieldContainer>
             <FieldName>Nome</FieldName>
-            <FieldValue>{informations.name}</FieldValue>
+            <FieldValue>{user.first_name + ' ' + user.last_name}</FieldValue>
           </FieldContainer>
         </Row>
 
         <Row>
           <FieldContainer>
             <FieldName>CPF</FieldName>
-            <FieldValue>{informations.document}</FieldValue>
+            <FieldValue>{user.cpf}</FieldValue>
           </FieldContainer>
 
           <FieldContainer>
             <FieldName right={true}>WhatsApp</FieldName>
-            <FieldValue right={true}>{informations.whatsapp}</FieldValue>
+            <FieldValue right={true}>{user.phone_number}</FieldValue>
           </FieldContainer>
         </Row>
 
         <Row noMargin={true}>
           <FieldContainer>
             <FieldName>E-mail</FieldName>
-            <FieldValue>{informations.email}</FieldValue>
+            <FieldValue>{user.email}</FieldValue>
           </FieldContainer>
         </Row>
       </InformationsContainer>
