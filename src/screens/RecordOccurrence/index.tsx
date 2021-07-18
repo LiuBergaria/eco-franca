@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Dimensions, ScrollView } from 'react-native';
 
-import { useNavigation } from '@react-navigation/native';
+import { useHeader } from 'src/contexts/header';
 
 import Informations from './Informations';
 import PickAddress from './PickAddress';
@@ -15,7 +15,7 @@ const RecordOccurrence = (): JSX.Element => {
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const navigation = useNavigation();
+  const { addGoBackCallback, resetGoBackCallback } = useHeader();
 
   const scrollTo = useCallback((page: number) => {
     scrollRef.current?.scrollTo({
@@ -25,7 +25,19 @@ const RecordOccurrence = (): JSX.Element => {
 
   useEffect(() => {
     scrollTo(currentPage);
-  }, [scrollTo, currentPage, navigation]);
+
+    if (currentPage === 1) {
+      resetGoBackCallback();
+    } else {
+      const goBack = (): void => {
+        setCurrentPage(currentPage - 1);
+      };
+
+      addGoBackCallback(goBack);
+    }
+  }, [scrollTo, currentPage, resetGoBackCallback, addGoBackCallback]);
+
+  useEffect(() => () => resetGoBackCallback(), [resetGoBackCallback]);
 
   return (
     <Container>

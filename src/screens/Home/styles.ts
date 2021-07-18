@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 import Logo from 'src/components/Logo';
 
-export const Container = styled.SafeAreaView`
+export const Container = styled.View`
   flex: 1;
 
   width: 100%;

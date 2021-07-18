@@ -5,6 +5,7 @@ import {
   StackNavigationOptions,
 } from '@react-navigation/stack';
 
+import Header from './components/Header';
 import CreateAccount from './screens/CreateAccount';
 import CreateAccountSuccess from './screens/CreateAccountSuccess';
 import Home from './screens/Home';
@@ -50,7 +51,12 @@ const screenOptions: StackNavigationOptions = {
 
 const Routes = (): JSX.Element => {
   return (
-    <Stack.Navigator screenOptions={screenOptions}>
+    <Stack.Navigator
+      screenOptions={{
+        ...screenOptions,
+        header: (props) => <Header {...props} />,
+      }}
+    >
       <Stack.Screen name={'Welcome'} component={Welcome} />
       <Stack.Screen name={'Login'} component={Login} />
       <Stack.Screen name={'CreateAccount'} component={CreateAccount} />

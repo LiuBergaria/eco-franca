@@ -66,6 +66,7 @@ module.exports = {
       { caseSensitive: true, natural: false, minKeys: 20 },
     ],
     'prettier/prettier': 'error',
+    'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',
     'react/jsx-boolean-value': ['error', 'always'],
     'react/jsx-curly-brace-presence': [
