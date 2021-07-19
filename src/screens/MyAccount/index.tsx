@@ -14,13 +14,17 @@ import {
   Title,
 } from './styles';
 
-const MyAccount = (): JSX.Element => {
+const MyAccount = (): JSX.Element | null => {
   const { theme, toggleTheme } = useTheme();
   const { user, signOut } = useAuth();
 
   const logout = useCallback(() => {
     signOut();
   }, [signOut]);
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <Container>
