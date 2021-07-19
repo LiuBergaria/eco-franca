@@ -5,7 +5,7 @@ import PressableBlock from 'src/components/PressableBlock';
 import { Container, StepText } from './styles';
 
 interface IProps {
-  onNext: () => void;
+  onNext: (pickAddressType: 'gps' | 'manual') => void;
 }
 
 const PickAddressType = ({ onNext }: IProps): JSX.Element => {
@@ -16,14 +16,14 @@ const PickAddressType = ({ onNext }: IProps): JSX.Element => {
       <PressableBlock
         title={'GPS'}
         icon={'map-marked-alt'}
-        onPress={onNext}
+        onPress={() => onNext('gps')}
         lightStyle={true}
         isRow={false}
       />
       <PressableBlock
         title={'Manual (escrito)'}
         icon={'pencil-alt'}
-        onPress={onNext}
+        onPress={() => onNext('manual')}
         isRow={false}
       />
     </Container>

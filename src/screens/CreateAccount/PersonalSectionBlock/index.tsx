@@ -10,6 +10,7 @@ import api from 'src/services/api';
 import getValidationErrors from 'src/utils/getValidationErrors';
 
 import { FormContainer, StepText } from './styles';
+
 interface IProps {
   goNext: (data: IData) => void;
 }

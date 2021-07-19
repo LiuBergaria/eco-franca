@@ -1,10 +1,10 @@
 enum OccurrenceTypes {
-  DescarteIrregularDeResiduos,
-  Desmatamento,
-  LoteamentoIrregular,
-  UsoIndevidoDeAreaPublica,
-  MausTratosContraAnimais,
-  AbandonoDeAnimais,
+  DescarteIrregularDeResiduos = 'DescarteIrregularDeResiduos',
+  Desmatamento = 'Desmatamento',
+  LoteamentoIrregular = 'LoteamentoIrregular',
+  UsoIndevidoDeAreaPublica = 'UsoIndevidoDeAreaPublica',
+  MausTratosContraAnimais = 'MausTratosContraAnimais',
+  AbandonoDeAnimais = 'AbandonoDeAnimais',
 }
 
 export default OccurrenceTypes;
