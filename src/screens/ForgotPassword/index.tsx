@@ -5,9 +5,7 @@ import { FormHandles, SubmitHandler } from '@unform/core';
 
 import Button from 'src/components/Button';
 import Input from 'src/components/Input';
-import { useAuth } from 'src/contexts/auth';
 import api from 'src/services/api';
-import Emitter, { EventTypes } from 'src/utils/Emitter';
 
 import {
   Container,
@@ -26,7 +24,6 @@ const ForgotPassword = (): JSX.Element => {
   const formRef = useRef<FormHandles>(null);
 
   const navigation = useNavigation();
-  const { signIn } = useAuth();
 
   const [isLoading, setIsLoading] = useState(false);
   const [isSended, setIsSended] = useState(false);
