@@ -69,7 +69,11 @@ interface IRequestHistoryProps {
 const RequestHistory = ({
   histories,
   footer,
-}: IRequestHistoryProps): JSX.Element => {
+}: IRequestHistoryProps): JSX.Element | null => {
+  if (!histories.length) {
+    return null;
+  }
+
   return (
     <Container>
       <Title>Histórico da solicitação</Title>

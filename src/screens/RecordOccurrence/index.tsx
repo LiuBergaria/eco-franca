@@ -18,10 +18,12 @@ import ViolatorInformations from './ViolatorInformations';
 
 interface IFullData {
   category: OccurrenceTypes;
-  street: string;
-  number: string;
-  district: string;
-  reference: string;
+  street?: string;
+  number?: string;
+  district?: string;
+  reference?: string;
+  latitude?: number;
+  longitude?: number;
   violatorName: string;
   violatorVehicle: string;
   violatorAddress: string;
@@ -39,7 +41,7 @@ const RecordOccurrence = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [pickAddressType, setPickAddressType] = useState<'gps' | 'manual'>(
-    'manual',
+    'gps',
   );
 
   const { addGoBackCallback, resetGoBackCallback } = useHeader();

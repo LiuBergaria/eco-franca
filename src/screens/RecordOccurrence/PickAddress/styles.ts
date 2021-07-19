@@ -1,6 +1,7 @@
 import { Dimensions } from 'react-native';
 
 import { Form } from '@unform/mobile';
+import MapView from 'react-native-maps';
 import styled from 'styled-components/native';
 
 import Fonts from 'src/styles/Fonts';
@@ -21,3 +22,10 @@ export const StepText = styled.Text`
 `;
 
 export const FormContainer = styled(Form)``;
+
+export const MapViewWrapped = styled(MapView)`
+  width: 100%;
+  height: 400px;
+
+  margin-bottom: 16px;
+`;
