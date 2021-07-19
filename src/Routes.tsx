@@ -9,6 +9,7 @@ import Header from './components/Header';
 import { useAuth } from './contexts/auth';
 import CreateAccount from './screens/CreateAccount';
 import CreateAccountSuccess from './screens/CreateAccountSuccess';
+import ForgotPassword from './screens/ForgotPassword';
 import Home from './screens/Home';
 import Login from './screens/Login';
 import MyAccount from './screens/MyAccount';
@@ -65,6 +66,7 @@ const Routes = (): JSX.Element | null => {
         <>
           <Stack.Screen name={'Welcome'} component={Welcome} />
           <Stack.Screen name={'Login'} component={Login} />
+          <Stack.Screen name={'ForgotPassword'} component={ForgotPassword} />
           <Stack.Screen name={'CreateAccount'} component={CreateAccount} />
           <Stack.Screen
             name={'CreateAccountSuccess'}

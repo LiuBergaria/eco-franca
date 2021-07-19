@@ -110,6 +110,10 @@ const Login = (): JSX.Element => {
             title={'Esqueci minha senha'}
             colorStyle={'transparent'}
             disabled={isLoading}
+            onPress={() => {
+              Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
+              navigation.navigate('ForgotPassword');
+            }}
           />
         </FormContainer>
       </Wrapper>
