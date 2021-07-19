@@ -1,60 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useNavigation } from '@react-navigation/native';
 
-import OccurrenceCard from 'src/components/OccurenceCard';
-import OccurrenceStatus from 'src/enums/OccurrenceStatus';
-import OccurrenceTypes from 'src/enums/OccurrenceTypes';
+import OccurrenceCard, { IOccurrence } from 'src/components/OccurenceCard';
+import api from 'src/services/api';
 import Emitter, { EventTypes } from 'src/utils/Emitter';
 
 import { Container, List, Title } from './styles';
 
-const data = [
-  {
-    id: '1',
-    category: OccurrenceTypes.DescarteIrregularDeResiduos,
-    newNotification: true,
-    number: '12355/2021',
-    violationNumber: '98422',
-    status: OccurrenceStatus.Encaminhamento2Promotoria,
-    datetime: new Date('2021-05-22T11:07:12.351Z'),
-  },
-  {
-    id: '2',
-    category: OccurrenceTypes.Desmatamento,
-    newNotification: false,
-    number: '11235/2021',
-    violationNumber: undefined,
-    status: OccurrenceStatus.NaoProcede,
-    datetime: new Date('2021-01-02T15:21:12.351Z'),
-  },
-  {
-    id: '3',
-    category: OccurrenceTypes.MausTratosContraAnimais,
-    newNotification: false,
-    number: undefined,
-    violationNumber: undefined,
-    status: OccurrenceStatus.SolicitacaoCriada,
-    datetime: new Date('2021-11-30T23:05:12.351Z'),
-  },
-];
-
 const MyOccurrences = (): JSX.Element => {
   const navigation = useNavigation();
+  const [occurrences, setOccurrences] = useState<IOccurrence[]>([]);
+
+  const getOccurrences = async (): Promise<void> => {
+    const response = await api.get('/occurrence/citizen/list');
+
+    setOccurrences(response.data);
+  };
+
+  useEffect(() => {
+    getOccurrences();
+  }, []);
+
   return (
     <Container>
       <Title>Minhas ocorrências</Title>
 
       <List
-        data={data}
-        keyExtractor={(item) => item.id}
-        renderItem={(item) => (
+        data={occurrences}
+        keyExtractor={({ id }) => id}
+        renderItem={({ item, index }) => (
           <OccurrenceCard
-            data={item.item}
-            lightStyle={item.index % 2 === 0}
+            data={item}
+            lightStyle={index % 2 === 0}
             onPress={() => {
               Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
-              navigation.navigate('ShowOccurrence', { id: item.item.id });
+              navigation.navigate('ShowOccurrence', { id: item.id });
             }}
           />
         )}

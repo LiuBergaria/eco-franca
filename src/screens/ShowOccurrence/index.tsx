@@ -1,50 +1,69 @@
-import React from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
+
+import { useRoute } from '@react-navigation/native';
 
 import OccurrenceCard from 'src/components/OccurenceCard';
-import OccurrenceStatus from 'src/enums/OccurrenceStatus';
-import OccurrenceTypes from 'src/enums/OccurrenceTypes';
+import api from 'src/services/api';
 
-import RequestHistory from './RequestHistory';
+import RequestHistory, { IHistory } from './RequestHistory';
 import { Container, Title, Wrapper } from './styles';
 
-const data = {
-  id: '1',
-  category: OccurrenceTypes.DescarteIrregularDeResiduos,
-  newNotification: true,
-  number: '12355/2021',
-  violationNumber: '98422',
-  status: OccurrenceStatus.Encaminhamento2Promotoria,
-  datetime: new Date('2021-05-22T11:07:12.351Z'),
-};
-
-const histories = [
-  {
-    datetime: new Date('2021-11-30T23:05:12.351Z'),
-    title: 'Solicitação criada',
-    commentary: 'Exemplo de comentário de troca de status',
-  },
-  {
-    datetime: new Date('2021-11-30T23:05:12.351Z'),
-    title: 'Solicitação criada2ß',
-  },
-  {
-    datetime: new Date('2021-11-30T23:05:12.351Z'),
-    title: 'Solicitação criada3',
-    commentary: 'Exemplo de comentário de troca de status',
-  },
-];
-
-const footer =
-  'Para acompanhar o pedido, entre em contato pelo email policiaambiental@gov.com.br ou pelo telefone (016) 99999-9999';
+interface IFullOccurrence {
+  category: string;
+  status: string;
+  description: string;
+  occurrenceDate: string;
+  newNotification: boolean;
+  occurrenceNumber: string | null;
+  violationNumber: string | null;
+  address: {
+    address: string;
+    number: string;
+    district: string;
+    reference: string | null;
+    latitude: string | null;
+    longitude: string | null;
+  };
+  histories: IHistory[];
+  violator: {
+    name: string | undefined;
+    vehicle: string | undefined;
+    address: string | undefined;
+    otherInformation: string | undefined;
+  };
+}
 
 const ShowOccurrence = (): JSX.Element => {
+  const route = useRoute();
+
+  const [occurrence, setOccurrence] = useState<IFullOccurrence>();
+
+  const getOccurrence = useCallback(async (): Promise<void> => {
+    const response = await api.get('/occurrence/citizen/' + route.params?.id);
+
+    setOccurrence(response.data);
+  }, [route.params?.id]);
+
+  useEffect(() => {
+    getOccurrence();
+  }, [getOccurrence]);
+
   return (
     <Container>
       <Wrapper>
-        <Title>Ocorrência {data.number ? `n° ${data.number}` : 'criada'}</Title>
+        <Title>
+          Ocorrência{' '}
+          {occurrence?.occurrenceNumber
+            ? `n° ${occurrence?.occurrenceNumber}`
+            : 'criada'}
+        </Title>
 
-        <OccurrenceCard data={data} lightStyle={true} />
-        <RequestHistory histories={histories} footer={footer} />
+        {occurrence && (
+          <>
+            <OccurrenceCard data={occurrence} lightStyle={true} />
+            <RequestHistory histories={occurrence.histories} />
+          </>
+        )}
       </Wrapper>
     </Container>
   );

@@ -20,15 +20,19 @@ import {
   DatetimeText,
 } from './styles';
 
+export interface IOccurrence {
+  id: string;
+  category: OccurrenceTypes;
+  status: OccurrenceStatus;
+  description: string;
+  occurrenceNumber: string | null;
+  violationNumber: string | null;
+  newNotification: boolean;
+  occurrenceDate: Date;
+}
+
 interface IProps {
-  data: {
-    category: OccurrenceTypes;
-    newNotification: boolean;
-    number?: string;
-    violationNumber?: string;
-    status: OccurrenceStatus;
-    datetime: Date;
-  };
+  data: IOccurrence;
   lightStyle?: boolean;
   onPress?: () => void;
 }
@@ -36,18 +40,24 @@ interface IProps {
 const OccurrenceCard = ({
   data: {
     category,
-    newNotification,
-    number,
-    violationNumber,
     status,
-    datetime,
+    occurrenceNumber,
+    violationNumber,
+    newNotification,
+    occurrenceDate,
   },
   lightStyle,
   onPress,
 }: IProps): JSX.Element => {
-  const { title, icon } = getOccurrenceTypeInformation(category);
+  const datetime = new Date(occurrenceDate);
 
-  const { title: statusTitle } = getOccurrenceStatusInformation(status);
+  const { title, icon } = getOccurrenceTypeInformation(
+    OccurrenceTypes[category],
+  );
+
+  const { title: statusTitle } = getOccurrenceStatusInformation(
+    OccurrenceStatus[status],
+  );
 
   return (
     <Container
@@ -68,7 +78,9 @@ const OccurrenceCard = ({
       <Row>
         <FieldContainer>
           <FieldName lightStyle={lightStyle}>N° da ocorrência</FieldName>
-          <FieldValue lightStyle={lightStyle}>{number ?? '-'}</FieldValue>
+          <FieldValue lightStyle={lightStyle}>
+            {occurrenceNumber ?? '-'}
+          </FieldValue>
         </FieldContainer>
 
         <FieldContainer>

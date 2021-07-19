@@ -1,5 +1,8 @@
+import { FlatList } from 'react-native';
+
 import styled from 'styled-components/native';
 
+import { IOccurrence } from 'src/components/OccurenceCard';
 import Fonts from 'src/styles/Fonts';
 
 export const Container = styled.View`
@@ -15,7 +18,7 @@ export const Title = styled.Text`
   color: ${({ theme }) => theme.foreground};
 `;
 
-export const List = styled.FlatList`
+export const List = styled(FlatList as new () => FlatList<IOccurrence>)`
   flex: 1;
 
   padding: 0 24px;
