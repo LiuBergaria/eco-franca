@@ -5,6 +5,7 @@ import React, {
   useContext,
   useEffect,
 } from 'react';
+import { StatusBar } from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ThemeProvider } from 'styled-components';
@@ -23,7 +24,7 @@ interface IThemeContextData {
 const ThemeContext = createContext<IThemeContextData>({} as IThemeContextData);
 
 const themeKey = '@EcoFranca:theme';
-const defaultTheme = 'dark';
+const defaultTheme = 'light';
 
 export const CustomThemeProvider: React.FC = ({ children }) => {
   const [theme, setTheme] = useState<ThemeOption>(defaultTheme);
@@ -56,6 +57,11 @@ export const CustomThemeProvider: React.FC = ({ children }) => {
         toggleTheme,
       }}
     >
+      <StatusBar
+        barStyle={`${theme === 'dark' ? 'light' : 'dark'}-content`}
+        backgroundColor={Themes[theme].background}
+      />
+
       <ThemeProvider theme={Themes[theme]}>{children}</ThemeProvider>
     </ThemeContext.Provider>
   );
