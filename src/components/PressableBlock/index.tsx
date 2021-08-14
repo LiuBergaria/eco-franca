@@ -10,7 +10,7 @@ interface IProps extends TouchableOpacityProps {
   icon: string;
   lightStyle?: boolean;
   isRow?: boolean;
-  floatElement?: JSX.Element;
+  floatElement?: JSX.Element | false;
 }
 
 const PressableBlock = ({
