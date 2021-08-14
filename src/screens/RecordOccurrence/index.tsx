@@ -66,8 +66,6 @@ const RecordOccurrence = (): JSX.Element => {
     }
   }, [scrollTo, currentPage, resetGoBackCallback, addGoBackCallback]);
 
-  useEffect(() => () => resetGoBackCallback(), [resetGoBackCallback]);
-
   const uploadImages = async (id: string): Promise<void> => {
     setIsLoading(true);
 
@@ -86,11 +84,11 @@ const RecordOccurrence = (): JSX.Element => {
 
     const response = await api.post(`/occurrence/${id}/photos`, formData);
 
+    setIsLoading(false);
+
     if (response.status === 204) {
       setCurrentPage((oldCurrentPage) => oldCurrentPage + 1);
     }
-
-    setIsLoading(false);
   };
 
   const createOccurrence = async (): Promise<void> => {
@@ -105,13 +103,13 @@ const RecordOccurrence = (): JSX.Element => {
 
     const response = await api.post('/occurrence', occurrenceRequestBody);
 
+    setIsLoading(false);
+
     if (response.status === 200) {
       setOccurrenceId(response.data.id);
 
       uploadImages(response.data.id);
     }
-
-    setIsLoading(false);
   };
 
   return (

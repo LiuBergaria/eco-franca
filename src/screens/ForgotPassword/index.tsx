@@ -1,10 +1,11 @@
 import React, { useRef, useCallback, useState } from 'react';
 
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { FormHandles, SubmitHandler } from '@unform/core';
 
 import Button from 'src/components/Button';
 import Input from 'src/components/Input';
+import { useHeader } from 'src/contexts/header';
 import api from 'src/services/api';
 
 import {
@@ -24,9 +25,14 @@ const ForgotPassword = (): JSX.Element => {
   const formRef = useRef<FormHandles>(null);
 
   const navigation = useNavigation();
+  const { resetGoBackCallback } = useHeader();
 
   const [isLoading, setIsLoading] = useState(false);
   const [isSended, setIsSended] = useState(false);
+
+  useFocusEffect(() => {
+    resetGoBackCallback();
+  });
 
   const submit: SubmitHandler<IData> = useCallback(async (data) => {
     setIsLoading(true);

@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useCallback } from 'react';
 
-import { useRoute } from '@react-navigation/native';
+import { useFocusEffect, useRoute } from '@react-navigation/native';
 
 import OccurrenceCard from 'src/components/OccurenceCard';
+import { useHeader } from 'src/contexts/header';
 import api from 'src/services/api';
 
 import RequestHistory, { IHistory } from './RequestHistory';
@@ -35,6 +36,7 @@ interface IFullOccurrence {
 
 const ShowOccurrence = (): JSX.Element => {
   const route = useRoute();
+  const { resetGoBackCallback } = useHeader();
 
   const [occurrence, setOccurrence] = useState<IFullOccurrence>();
 
@@ -43,6 +45,10 @@ const ShowOccurrence = (): JSX.Element => {
 
     setOccurrence(response.data);
   }, [route.params?.id]);
+
+  useFocusEffect(() => {
+    resetGoBackCallback();
+  });
 
   useEffect(() => {
     getOccurrence();

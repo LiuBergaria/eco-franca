@@ -55,12 +55,13 @@ const CreateAccount = (): JSX.Element => {
 
     const response = await api.post('/citizen', data.current);
 
+    setIsLoading(false);
+
     if (response.status === 204) {
+      resetGoBackCallback();
       navigation.dispatch(StackActions.pop(1));
       navigation.navigate('CreateAccountSuccess');
     }
-
-    setIsLoading(false);
   };
 
   return (

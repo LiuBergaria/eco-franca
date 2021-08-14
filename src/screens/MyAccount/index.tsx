@@ -1,7 +1,10 @@
 import React, { useCallback } from 'react';
 
+import { useFocusEffect } from '@react-navigation/native';
+
 import Button from 'src/components/Button';
 import { useAuth } from 'src/contexts/auth';
+import { useHeader } from 'src/contexts/header';
 import { useTheme } from 'src/contexts/theme';
 
 import {
@@ -17,10 +20,15 @@ import {
 const MyAccount = (): JSX.Element | null => {
   const { theme, toggleTheme } = useTheme();
   const { user, signOut } = useAuth();
+  const { resetGoBackCallback } = useHeader();
 
   const logout = useCallback(() => {
     signOut();
   }, [signOut]);
+
+  useFocusEffect(() => {
+    resetGoBackCallback();
+  });
 
   if (!user) {
     return null;
