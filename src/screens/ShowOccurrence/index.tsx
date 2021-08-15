@@ -35,16 +35,26 @@ interface IFullOccurrence {
 }
 
 const ShowOccurrence = (): JSX.Element => {
-  const route = useRoute();
+  const {
+    params: { id },
+  } = useRoute();
   const { resetGoBackCallback } = useHeader();
 
   const [occurrence, setOccurrence] = useState<IFullOccurrence>();
 
+  const removeNewNotification = useCallback(async () => {
+    await api.patch('/occurrence/' + id + '/remove-notification');
+  }, [id]);
+
   const getOccurrence = useCallback(async (): Promise<void> => {
-    const response = await api.get('/occurrence/citizen/' + route.params?.id);
+    const response = await api.get('/occurrence/citizen/' + id);
+
+    if (response.data.newNotification) {
+      removeNewNotification();
+    }
 
     setOccurrence(response.data);
-  }, [route.params?.id]);
+  }, [id, removeNewNotification]);
 
   useFocusEffect(() => {
     resetGoBackCallback();
