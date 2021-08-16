@@ -6,6 +6,7 @@ import { FormHandles, SubmitHandler } from '@unform/core';
 import Button from 'src/components/Button';
 import Input from 'src/components/Input';
 import { useAuth } from 'src/contexts/auth';
+import { MainNavigationProp, Screens } from 'src/Routes';
 import api from 'src/services/api';
 import Emitter, { EventTypes } from 'src/utils/Emitter';
 
@@ -25,7 +26,7 @@ interface IData {
 const Login = (): JSX.Element => {
   const formRef = useRef<FormHandles>(null);
 
-  const navigation = useNavigation();
+  const navigation = useNavigation<MainNavigationProp>();
   const { signIn } = useAuth();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -58,7 +59,7 @@ const Login = (): JSX.Element => {
           });
 
           Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
-          navigation.navigate('Home');
+          navigation.navigate(Screens.Home);
         }
         setIsLoading(false);
       }, 2000);
@@ -112,7 +113,7 @@ const Login = (): JSX.Element => {
             disabled={isLoading}
             onPress={() => {
               Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
-              navigation.navigate('ForgotPassword');
+              navigation.navigate(Screens.ForgotPassword);
             }}
           />
         </FormContainer>

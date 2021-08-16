@@ -6,6 +6,7 @@ import { FormHandles, SubmitHandler } from '@unform/core';
 import Button from 'src/components/Button';
 import Input from 'src/components/Input';
 import { useHeader } from 'src/contexts/header';
+import { MainNavigationProp } from 'src/Routes';
 import api from 'src/services/api';
 
 import {
@@ -24,7 +25,7 @@ interface IData {
 const ForgotPassword = (): JSX.Element => {
   const formRef = useRef<FormHandles>(null);
 
-  const navigation = useNavigation();
+  const navigation = useNavigation<MainNavigationProp>();
   const { resetGoBackCallback } = useHeader();
 
   const [isLoading, setIsLoading] = useState(false);

@@ -7,7 +7,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import AnimatedBackground from './components/AnimatedBackground';
 import AppProvider from './contexts';
-import Routes from './Routes';
+import Navigator from './Navigator';
 import { MainContainer } from './styles/Global';
 import Emitter, { EventTypes } from './utils/Emitter';
 
@@ -39,7 +39,7 @@ const App = (): JSX.Element => {
         <AnimatedBackground />
 
         <MainContainer>
-          <Routes />
+          <Navigator />
         </MainContainer>
       </AppProvider>
     </NavigationContainer>

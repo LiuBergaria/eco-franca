@@ -4,13 +4,14 @@ import { useNavigation } from '@react-navigation/native';
 
 import NotificationBadger from 'src/components/NotificationBadger';
 import PressableBlock from 'src/components/PressableBlock';
+import { MainNavigationProp, Screens } from 'src/Routes';
 import api from 'src/services/api';
 import Emitter, { EventTypes } from 'src/utils/Emitter';
 
 import { Container, ItemsContainer, Wrapper } from './styles';
 
 const Home = (): JSX.Element => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<MainNavigationProp>();
   const [notificationsCount, setNotificationsCount] = useState(0);
 
   const loadNotificationsCount = async (): Promise<void> => {
@@ -33,7 +34,7 @@ const Home = (): JSX.Element => {
             lightStyle={true}
             onPress={() => {
               Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
-              navigation.navigate('RecordOccurrence');
+              navigation.navigate(Screens.RecordOccurrence);
             }}
           />
           <PressableBlock
@@ -46,7 +47,7 @@ const Home = (): JSX.Element => {
             }
             onPress={() => {
               Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
-              navigation.navigate('MyOccurrences');
+              navigation.navigate(Screens.MyOccurrences);
             }}
           />
           <PressableBlock
@@ -55,7 +56,7 @@ const Home = (): JSX.Element => {
             lightStyle={true}
             onPress={() => {
               Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
-              navigation.navigate('MyAccount');
+              navigation.navigate(Screens.MyAccount);
             }}
           />
         </ItemsContainer>

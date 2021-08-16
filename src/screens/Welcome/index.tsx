@@ -3,6 +3,7 @@ import React from 'react';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 
 import { useHeader } from 'src/contexts/header';
+import { MainNavigationProp, Screens } from 'src/Routes';
 import Emitter, { EventTypes } from 'src/utils/Emitter';
 
 import {
@@ -17,7 +18,7 @@ import {
 } from './styles';
 
 const Welcome = (): JSX.Element => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<MainNavigationProp>();
   const { setShowLogo } = useHeader();
 
   useFocusEffect(() => {
@@ -43,7 +44,7 @@ const Welcome = (): JSX.Element => {
             title={'Entrar'}
             onPress={() => {
               Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
-              navigation.navigate('Login');
+              navigation.navigate(Screens.Login);
             }}
           />
           <StyledButton
@@ -51,7 +52,7 @@ const Welcome = (): JSX.Element => {
             colorStyle={'lightTeal'}
             onPress={() => {
               Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
-              navigation.navigate('CreateAccount');
+              navigation.navigate(Screens.CreateAccount);
             }}
           />
         </ActionsContainer>

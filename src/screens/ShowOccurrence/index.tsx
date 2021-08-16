@@ -4,6 +4,7 @@ import { useFocusEffect, useRoute } from '@react-navigation/native';
 
 import OccurrenceCard from 'src/components/OccurenceCard';
 import { useHeader } from 'src/contexts/header';
+import { ShowOccurrenceScreenProps } from 'src/Routes';
 import api from 'src/services/api';
 
 import RequestHistory, { IHistory } from './RequestHistory';
@@ -37,7 +38,7 @@ interface IFullOccurrence {
 const ShowOccurrence = (): JSX.Element => {
   const {
     params: { id },
-  } = useRoute();
+  } = useRoute<ShowOccurrenceScreenProps>();
   const { resetGoBackCallback } = useHeader();
 
   const [occurrence, setOccurrence] = useState<IFullOccurrence>();

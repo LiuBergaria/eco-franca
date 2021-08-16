@@ -3,12 +3,13 @@ import React from 'react';
 import { StackActions, useNavigation } from '@react-navigation/native';
 
 import Button from 'src/components/Button';
+import { MainNavigationProp, Screens } from 'src/Routes';
 import Emitter, { EventTypes } from 'src/utils/Emitter';
 
 import { Container, Icon, Subtitle, Title } from './styles';
 
 const CreateAccountSuccess = (): JSX.Element => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<MainNavigationProp>();
 
   return (
     <Container>
@@ -27,7 +28,7 @@ const CreateAccountSuccess = (): JSX.Element => {
         onPress={() => {
           navigation.dispatch(StackActions.pop(1));
           Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
-          navigation.navigate('Login');
+          navigation.navigate(Screens.Login);
         }}
       />
     </Container>

@@ -3,12 +3,13 @@ import React from 'react';
 import { StackActions, useNavigation } from '@react-navigation/native';
 
 import Button from 'src/components/Button';
+import { MainNavigationProp } from 'src/Routes';
 import Emitter, { EventTypes } from 'src/utils/Emitter';
 
 import { Container, Icon, Subtitle, Title } from './styles';
 
 const RecordOccurrenceSuccess = (): JSX.Element => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<MainNavigationProp>();
 
   return (
     <Container>

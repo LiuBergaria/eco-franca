@@ -7,6 +7,7 @@ import {
 
 import Header from './components/Header';
 import { useAuth } from './contexts/auth';
+import { MainNavigationParamsList, Screens } from './Routes';
 import CreateAccount from './screens/CreateAccount';
 import CreateAccountSuccess from './screens/CreateAccountSuccess';
 import ForgotPassword from './screens/ForgotPassword';
@@ -18,7 +19,7 @@ import RecordOccurrence from './screens/RecordOccurrence';
 import ShowOccurrence from './screens/ShowOccurrence';
 import Welcome from './screens/Welcome';
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<MainNavigationParamsList>();
 
 const screenOptions: StackNavigationOptions = {
   transitionSpec: {
@@ -52,7 +53,7 @@ const screenOptions: StackNavigationOptions = {
   },
 };
 
-const Routes = (): JSX.Element | null => {
+const Navigator = (): JSX.Element | null => {
   const { isAuthenticated } = useAuth();
 
   return (
@@ -64,29 +65,41 @@ const Routes = (): JSX.Element | null => {
     >
       {!isAuthenticated ? (
         <>
-          <Stack.Screen name={'Welcome'} component={Welcome} />
-          <Stack.Screen name={'Login'} component={Login} />
-          <Stack.Screen name={'ForgotPassword'} component={ForgotPassword} />
-          <Stack.Screen name={'CreateAccount'} component={CreateAccount} />
+          <Stack.Screen name={Screens.Welcome} component={Welcome} />
+          <Stack.Screen name={Screens.Login} component={Login} />
           <Stack.Screen
-            name={'CreateAccountSuccess'}
+            name={Screens.ForgotPassword}
+            component={ForgotPassword}
+          />
+          <Stack.Screen
+            name={Screens.CreateAccount}
+            component={CreateAccount}
+          />
+          <Stack.Screen
+            name={Screens.CreateAccountSuccess}
             component={CreateAccountSuccess}
           />
         </>
       ) : (
         <>
-          <Stack.Screen name={'Home'} component={Home} />
+          <Stack.Screen name={Screens.Home} component={Home} />
           <Stack.Screen
-            name={'RecordOccurrence'}
+            name={Screens.RecordOccurrence}
             component={RecordOccurrence}
           />
-          <Stack.Screen name={'MyOccurrences'} component={MyOccurrences} />
-          <Stack.Screen name={'ShowOccurrence'} component={ShowOccurrence} />
-          <Stack.Screen name={'MyAccount'} component={MyAccount} />
+          <Stack.Screen
+            name={Screens.MyOccurrences}
+            component={MyOccurrences}
+          />
+          <Stack.Screen
+            name={Screens.ShowOccurrence}
+            component={ShowOccurrence}
+          />
+          <Stack.Screen name={Screens.MyAccount} component={MyAccount} />
         </>
       )}
     </Stack.Navigator>
   );
 };
 
-export default Routes;
+export default Navigator;

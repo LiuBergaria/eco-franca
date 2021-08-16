@@ -4,13 +4,14 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native';
 
 import OccurrenceCard, { IOccurrence } from 'src/components/OccurenceCard';
 import { useHeader } from 'src/contexts/header';
+import { MainNavigationProp, Screens } from 'src/Routes';
 import api from 'src/services/api';
 import Emitter, { EventTypes } from 'src/utils/Emitter';
 
 import { Container, List, LoaderContainer, Title } from './styles';
 
 const MyOccurrences = (): JSX.Element => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<MainNavigationProp>();
   const { resetGoBackCallback } = useHeader();
 
   const [occurrences, setOccurrences] = useState<IOccurrence[]>([]);
@@ -54,7 +55,7 @@ const MyOccurrences = (): JSX.Element => {
             lightStyle={index % 2 === 0}
             onPress={() => {
               Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
-              navigation.navigate('ShowOccurrence', { id: item.id });
+              navigation.navigate(Screens.ShowOccurrence, { id: item.id });
             }}
           />
         )}

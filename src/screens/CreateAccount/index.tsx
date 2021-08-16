@@ -4,6 +4,7 @@ import { ScrollView, Dimensions } from 'react-native';
 import { StackActions, useNavigation } from '@react-navigation/native';
 
 import { useHeader } from 'src/contexts/header';
+import { MainNavigationProp, Screens } from 'src/Routes';
 import api from 'src/services/api';
 
 import CPFSectionBlock from './CPFSectionBlock';
@@ -27,7 +28,7 @@ const CreateAccount = (): JSX.Element => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
 
-  const navigation = useNavigation();
+  const navigation = useNavigation<MainNavigationProp>();
   const { addGoBackCallback, resetGoBackCallback } = useHeader();
 
   const scrollTo = useCallback((page: number) => {
@@ -60,7 +61,7 @@ const CreateAccount = (): JSX.Element => {
     if (response.status === 204) {
       resetGoBackCallback();
       navigation.dispatch(StackActions.pop(1));
-      navigation.navigate('CreateAccountSuccess');
+      navigation.navigate(Screens.CreateAccountSuccess);
     }
   };
 
