@@ -10,7 +10,6 @@ import React, {
 import { TextInput as TextInputRN, TextInputProps } from 'react-native';
 
 import { useField } from '@unform/core';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 import {
   Container,

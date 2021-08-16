@@ -6,7 +6,6 @@ import * as Yup from 'yup';
 import Button from 'src/components/Button';
 import Input from 'src/components/Input';
 import passwordSectionSchema from 'src/schemas/CreateAccount/passwordSectionSchema';
-import personalSectionSchema from 'src/schemas/CreateAccount/personalSectionSchema';
 import getValidationErrors from 'src/utils/getValidationErrors';
 
 import { FormContainer, StepText } from './styles';

@@ -4,6 +4,8 @@ import { useFocusEffect, useRoute } from '@react-navigation/native';
 
 import OccurrenceCard from 'src/components/OccurenceCard';
 import { useHeader } from 'src/contexts/header';
+import OccurrenceStatus from 'src/enums/OccurrenceStatus';
+import OccurrenceTypes from 'src/enums/OccurrenceTypes';
 import { ShowOccurrenceScreenProps } from 'src/Routes';
 import api from 'src/services/api';
 
@@ -11,8 +13,8 @@ import RequestHistory, { IHistory } from './RequestHistory';
 import { Container, Title, Wrapper } from './styles';
 
 interface IFullOccurrence {
-  category: string;
-  status: string;
+  category: OccurrenceTypes;
+  status: OccurrenceStatus;
   description: string;
   occurrenceDate: string;
   newNotification: boolean;

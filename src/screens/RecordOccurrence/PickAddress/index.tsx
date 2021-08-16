@@ -68,7 +68,7 @@ const PickAddress = ({ onNext, type }: IProps): JSX.Element => {
             setIsLoading(false);
           },
           (error) => {
-            // See error code charts below.
+            // eslint-disable-next-line no-console
             console.log(error.code, error.message);
           },
           { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 },

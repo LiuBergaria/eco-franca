@@ -29,11 +29,11 @@ export interface IOccurrence {
   occurrenceNumber: string | null;
   violationNumber: string | null;
   newNotification: boolean;
-  occurrenceDate: Date;
+  occurrenceDate: string;
 }
 
 interface IProps {
-  data: IOccurrence;
+  data: Omit<IOccurrence, 'id'>;
   lightStyle?: boolean;
   onPress?: () => void;
 }

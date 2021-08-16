@@ -10,11 +10,17 @@ interface IProps {
 const Loading = ({ isLoading, loadingType }: IProps): JSX.Element => {
   return (
     <Container>
-      <Loader />
+      {isLoading && (
+        <>
+          <Loader />
 
-      <Text>
-        {loadingType === 'upload' ? 'Subindo imagens' : 'Criando ocorrência'}
-      </Text>
+          <Text>
+            {loadingType === 'upload'
+              ? 'Subindo imagens'
+              : 'Criando ocorrência'}
+          </Text>
+        </>
+      )}
     </Container>
   );
 };
