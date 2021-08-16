@@ -7,6 +7,7 @@ import OccurrenceTypes from 'src/enums/OccurrenceTypes';
 import getOccurrenceStatusInformation from 'src/utils/getOccurrenceStatusInformation';
 import getOccurrenceTypeInformation from 'src/utils/getOccurrenceTypeInformation';
 
+import OccurrenceCardLoader from './Loader';
 import {
   Container,
   FieldContainer,
@@ -109,5 +110,7 @@ const OccurrenceCard = ({
     </Container>
   );
 };
+
+OccurrenceCard.Loader = OccurrenceCardLoader;
 
 export default OccurrenceCard;

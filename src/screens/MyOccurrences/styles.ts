@@ -23,3 +23,7 @@ export const List = styled(FlatList as new () => FlatList<IOccurrence>)`
 
   padding: 0 24px;
 `;
+
+export const LoaderContainer = styled.View`
+  padding: 0 24px;
+`;
