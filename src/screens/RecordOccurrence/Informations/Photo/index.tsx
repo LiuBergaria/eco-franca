@@ -12,7 +12,10 @@ interface IProps {
 const Photo = ({ asset, removeFn }: IProps): JSX.Element => {
   return (
     <Container>
-      <Image source={{ uri: asset.uri }} />
+      <Image
+        source={{ uri: asset.uri }}
+        accessibilityIgnoresInvertColors={true}
+      />
 
       <CloseButton onPress={removeFn}>
         <Icon />

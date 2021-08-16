@@ -1,7 +1,14 @@
+/* eslint-disable import/no-duplicates */
+/* eslint-disable import/order */
+
 declare module '*.jpg' {
-  export default '' as string;
+  import { ImageSourcePropType } from 'react-native';
+  const value: ImageSourcePropType;
+  export default value;
 }
 
 declare module '*.png' {
-  export default '' as string;
+  import { ImageSourcePropType } from 'react-native';
+  const value: ImageSourcePropType;
+  export default value;
 }

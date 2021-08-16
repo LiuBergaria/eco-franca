@@ -14,7 +14,9 @@ const Logo = (props: IProps): JSX.Element => {
 
   const source = theme === 'light' ? LogoImage : DarkLogoImage;
 
-  return <Image source={source} {...props} />;
+  return (
+    <Image source={source} {...props} accessibilityIgnoresInvertColors={true} />
+  );
 };
 
 export default Logo;
