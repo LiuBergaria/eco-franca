@@ -20,8 +20,9 @@ const RecordOccurrenceSuccess = (): JSX.Element => {
         com sucesso!
       </Title>
       <Subtitle>
-        Te enviamos um e-mail para confirmação.{'\n'}
-        Você só poderá acessar o sistema após confirmar a conta!
+        A sua solicitação já está sendo analisada e você pode acompanhar o
+        status no aplicativo!{'\n'}
+        Caso fique com alguma dúvida, entre em contato com o órgão responsável.
       </Subtitle>
       <Button
         title={'Ir para home'}
