@@ -5,7 +5,7 @@ import React, {
   useContext,
   useEffect,
 } from 'react';
-import { StatusBar } from 'react-native';
+import { Appearance, StatusBar } from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ThemeProvider } from 'styled-components';
@@ -32,7 +32,7 @@ export const CustomThemeProvider: React.FC = ({ children }) => {
   const loadTheme = useCallback(async () => {
     const loadedTheme = (await AsyncStorage.getItem(themeKey)) as ThemeOption;
 
-    setTheme(loadedTheme || defaultTheme);
+    setTheme(loadedTheme ?? Appearance.getColorScheme() ?? defaultTheme);
   }, []);
 
   useEffect(() => {
