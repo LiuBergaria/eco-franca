@@ -9,6 +9,7 @@ import OccurrenceTypes from 'src/enums/OccurrenceTypes';
 import { ShowOccurrenceScreenProps } from 'src/Routes';
 import api from 'src/services/api';
 
+import MoreInformations from './MoreInformations';
 import Photos from './Photos';
 import RequestHistory, { IHistory } from './RequestHistory';
 import { Container, Title, Wrapper } from './styles';
@@ -84,6 +85,12 @@ const ShowOccurrence = (): JSX.Element => {
             <OccurrenceCard data={occurrence} lightStyle={true} />
             <RequestHistory histories={occurrence.histories} />
             <Photos photos={occurrence.photos} />
+            <MoreInformations
+              data={{
+                description: occurrence.description,
+                violator: occurrence.violator,
+              }}
+            />
           </>
         )}
       </Wrapper>
