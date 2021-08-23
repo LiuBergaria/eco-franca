@@ -32,11 +32,13 @@ export const Wrapper = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 `;
 
 export const Photo = styled.Image`
   width: 30%;
   aspect-ratio: 1;
+  margin-bottom: 16px;
 `;
 
 export const PhotoPlaceholder = styled.View`
