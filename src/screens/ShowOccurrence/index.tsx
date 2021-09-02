@@ -9,6 +9,7 @@ import OccurrenceTypes from 'src/enums/OccurrenceTypes';
 import { ShowOccurrenceScreenProps } from 'src/Routes';
 import api from 'src/services/api';
 
+import AddressInformations from './AddressInformations';
 import MoreInformations from './MoreInformations';
 import Photos from './Photos';
 import RequestHistory, { IHistory } from './RequestHistory';
@@ -91,6 +92,7 @@ const ShowOccurrence = (): JSX.Element => {
                 violator: occurrence.violator,
               }}
             />
+            <AddressInformations address={occurrence.address} />
           </>
         )}
       </Wrapper>
