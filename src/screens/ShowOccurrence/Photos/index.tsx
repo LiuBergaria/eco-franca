@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 
+import PhotosLoader from './Loader';
 import {
   Container,
   NoPhotosText,
@@ -13,7 +14,7 @@ interface IProps {
   photos?: string[];
 }
 
-const Photos: React.FC<IProps> = ({ photos }) => {
+const Photos = ({ photos }: IProps): JSX.Element => {
   const placeholders = useMemo(() => {
     if (!photos) {
       return [];
@@ -50,5 +51,7 @@ const Photos: React.FC<IProps> = ({ photos }) => {
     </Container>
   );
 };
+
+Photos.Loader = PhotosLoader;
 
 export default Photos;

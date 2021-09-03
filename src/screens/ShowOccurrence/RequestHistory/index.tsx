@@ -5,6 +5,7 @@ import { format } from 'date-fns';
 import OccurrenceStatus from 'src/enums/OccurrenceStatus';
 import getOccurrenceStatusInformation from 'src/utils/getOccurrenceStatusInformation';
 
+import RequestHistoryLoader from './Loader';
 import {
   Container,
   Title,
@@ -95,5 +96,7 @@ const RequestHistory = ({
     </Container>
   );
 };
+
+RequestHistory.Loader = RequestHistoryLoader;
 
 export default RequestHistory;

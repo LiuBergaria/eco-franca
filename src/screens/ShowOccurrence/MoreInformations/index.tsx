@@ -1,5 +1,6 @@
 import React from 'react';
 
+import MoreInformationsLoader from './Loader';
 import { Container, Field } from './styles';
 
 interface IProps {
@@ -14,9 +15,9 @@ interface IProps {
   };
 }
 
-const MoreInformations: React.FC<IProps> = ({
+const MoreInformations = ({
   data: { description, violator },
-}) => {
+}: IProps): JSX.Element => {
   return (
     <Container>
       <Field.Row>
@@ -63,5 +64,7 @@ const MoreInformations: React.FC<IProps> = ({
     </Container>
   );
 };
+
+MoreInformations.Loader = MoreInformationsLoader;
 
 export default MoreInformations;

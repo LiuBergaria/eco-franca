@@ -48,12 +48,15 @@ const ShowOccurrence = (): JSX.Element => {
   const { resetGoBackCallback } = useHeader();
 
   const [occurrence, setOccurrence] = useState<IFullOccurrence>();
+  const [isLoading, setIsLoading] = useState(false);
 
   const removeNewNotification = useCallback(async () => {
     await api.patch('/occurrence/' + id + '/remove-notification');
   }, [id]);
 
   const getOccurrence = useCallback(async (): Promise<void> => {
+    setIsLoading(true);
+
     const response = await api.get('/occurrence/citizen/' + id);
 
     if (response.data.newNotification) {
@@ -61,6 +64,7 @@ const ShowOccurrence = (): JSX.Element => {
     }
 
     setOccurrence(response.data);
+    setIsLoading(false);
   }, [id, removeNewNotification]);
 
   useFocusEffect(() => {
@@ -71,15 +75,23 @@ const ShowOccurrence = (): JSX.Element => {
     getOccurrence();
   }, [getOccurrence]);
 
+  const title = occurrence?.occurrenceNumber
+    ? `Ocorrência n° ${occurrence?.occurrenceNumber}`
+    : 'Ocorrência criada';
+
   return (
     <Container>
-      <Wrapper>
-        <Title>
-          Ocorrência{' '}
-          {occurrence?.occurrenceNumber
-            ? `n° ${occurrence?.occurrenceNumber}`
-            : 'criada'}
-        </Title>
+      <Wrapper scrollEnabled={!isLoading}>
+        <Title>{title}</Title>
+
+        {isLoading && !occurrence && (
+          <>
+            <OccurrenceCard.Loader lightStyle={true} />
+            <RequestHistory.Loader />
+            <Photos.Loader />
+            <MoreInformations.Loader />
+          </>
+        )}
 
         {occurrence && (
           <>
