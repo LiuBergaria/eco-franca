@@ -50,6 +50,9 @@ spec:
             timeoutSeconds: 10
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: eco-franca-photos-volume
+              mountPath: /usr/app/public
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -62,3 +65,7 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      volumes:
+        - name: eco-franca-photos-volume
+          persistentVolumeClaim:
+            claimName: eco-franca-photos
