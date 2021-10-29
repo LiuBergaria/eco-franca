@@ -1,6 +1,7 @@
 stages:
   - helm-package
   - build
+  - deploy  
 
 Helm Package:
   stage: helm-package
