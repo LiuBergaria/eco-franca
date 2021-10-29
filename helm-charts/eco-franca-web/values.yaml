@@ -1,0 +1,48 @@
+replicaCount: 1
+
+image:
+  repository: registry.app.franca.sp.gov.br/unifacef/eco-franca/eco-franca-web
+  pullPolicy: Always
+  tag: latest
+
+imagePullSecrets:
+  - name: gitlab-registry
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+application:
+  serverPort: 80
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  className: "traefik"
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  hosts:
+    - host: ecofranca.app.franca.sp.gov.br
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: ecofranca-cert
+      hosts:
+        - ecofranca.app.franca.sp.gov.br
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
