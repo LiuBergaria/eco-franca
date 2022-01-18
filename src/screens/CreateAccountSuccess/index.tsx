@@ -4,7 +4,6 @@ import { StackActions, useNavigation } from '@react-navigation/native';
 
 import Button from 'src/components/Button';
 import { MainNavigationProp, Screens } from 'src/Routes';
-import Emitter, { EventTypes } from 'src/utils/Emitter';
 
 import { Container, Icon, Subtitle, Title } from './styles';
 
@@ -27,7 +26,6 @@ const CreateAccountSuccess = (): JSX.Element => {
         title={'Ir para login'}
         onPress={() => {
           navigation.dispatch(StackActions.pop(1));
-          Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
           navigation.navigate(Screens.Login);
         }}
       />

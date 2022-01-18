@@ -4,7 +4,6 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native';
 
 import { useHeader } from 'src/contexts/header';
 import { MainNavigationProp, Screens } from 'src/Routes';
-import Emitter, { EventTypes } from 'src/utils/Emitter';
 
 import {
   Container,
@@ -43,7 +42,6 @@ const Welcome = (): JSX.Element => {
           <StyledButton
             title={'Entrar'}
             onPress={() => {
-              Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
               navigation.navigate(Screens.Login);
             }}
           />
@@ -51,7 +49,6 @@ const Welcome = (): JSX.Element => {
             title={'Criar conta'}
             colorStyle={'lightTeal'}
             onPress={() => {
-              Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
               navigation.navigate(Screens.CreateAccount);
             }}
           />

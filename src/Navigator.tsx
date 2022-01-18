@@ -8,6 +8,7 @@ import {
 import Header from './components/Header';
 import { useAuth } from './contexts/auth';
 import { MainNavigationParamsList, Screens } from './Routes';
+import AboutTheApp from './screens/AboutTheApp';
 import CreateAccount from './screens/CreateAccount';
 import CreateAccountSuccess from './screens/CreateAccountSuccess';
 import ForgotPassword from './screens/ForgotPassword';
@@ -96,6 +97,7 @@ const Navigator = (): JSX.Element | null => {
             component={ShowOccurrence}
           />
           <Stack.Screen name={Screens.MyAccount} component={MyAccount} />
+          <Stack.Screen name={Screens.AboutTheApp} component={AboutTheApp} />
         </>
       )}
     </Stack.Navigator>

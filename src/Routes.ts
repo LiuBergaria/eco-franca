@@ -12,6 +12,7 @@ export enum Screens {
   MyOccurrences = 'MyOccurrences',
   ShowOccurrence = 'ShowOccurrence',
   MyAccount = 'MyAccount',
+  AboutTheApp = 'AboutTheApp',
 }
 
 export type MainNavigationParamsList = {
@@ -25,6 +26,7 @@ export type MainNavigationParamsList = {
   [Screens.MyOccurrences]: undefined;
   [Screens.ShowOccurrence]: { id: string };
   [Screens.MyAccount]: undefined;
+  [Screens.AboutTheApp]: undefined;
 };
 
 export type MainNavigationProp = StackNavigationProp<MainNavigationParamsList>;

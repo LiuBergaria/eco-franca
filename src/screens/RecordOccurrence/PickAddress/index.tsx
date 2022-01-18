@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { PermissionsAndroid, Platform } from 'react-native';
 
 import { FormHandles, SubmitHandler } from '@unform/core';
 import Geolocation from 'react-native-geolocation-service';
@@ -7,6 +8,7 @@ import * as Yup from 'yup';
 
 import Button from 'src/components/Button';
 import Input from 'src/components/Input';
+import { isGpsFeatureEnabled } from 'src/config';
 import pickAddressSchema from 'src/schemas/RecordOccurrence/pickAddress';
 import getValidationErrors from 'src/utils/getValidationErrors';
 
@@ -15,6 +17,7 @@ import { Container, FormContainer, MapViewWrapped, StepText } from './styles';
 interface IProps {
   onNext: (data: IData) => void;
   type: 'gps' | 'manual';
+  setPickAddressType(type: 'gps' | 'manual'): void;
 }
 
 interface IData {
@@ -31,7 +34,11 @@ interface ICoords {
   longitude: number;
 }
 
-const PickAddress = ({ onNext, type }: IProps): JSX.Element => {
+const PickAddress = ({
+  onNext,
+  type,
+  setPickAddressType,
+}: IProps): JSX.Element => {
   const formRef = useRef<FormHandles>(null);
 
   const [coordinates, setCoordinates] = useState<ICoords>();
@@ -53,29 +60,52 @@ const PickAddress = ({ onNext, type }: IProps): JSX.Element => {
     setIsLoading(false);
   };
 
+  const requestLocationAccess = async (): Promise<'denied' | 'granted'> => {
+    if (!isGpsFeatureEnabled) {
+      return 'denied';
+    }
+
+    const response = await (Platform.OS === 'android'
+      ? PermissionsAndroid.request('android.permission.ACCESS_FINE_LOCATION')
+      : Geolocation.requestAuthorization('whenInUse'));
+
+    if (
+      response === 'denied' ||
+      response === 'never_ask_again' ||
+      response === 'disabled'
+    ) {
+      return 'denied';
+    }
+
+    return 'granted';
+  };
+
   useEffect(() => {
     if (type === 'gps') {
       setIsLoading(true);
 
-      Geolocation.requestAuthorization('whenInUse').then(() => {
-        Geolocation.getCurrentPosition(
-          (position) => {
-            setCoordinates({
-              latitude: position.coords.latitude,
-              longitude: position.coords.longitude,
-            });
+      requestLocationAccess().then((response) => {
+        if (response === 'granted') {
+          Geolocation.getCurrentPosition(
+            (position) => {
+              setCoordinates({
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude,
+              });
 
-            setIsLoading(false);
-          },
-          (error) => {
-            // eslint-disable-next-line no-console
-            console.log(error.code, error.message);
-          },
-          { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 },
-        );
+              setIsLoading(false);
+            },
+            () => {
+              setPickAddressType('manual');
+            },
+            { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 },
+          );
+        } else {
+          setPickAddressType('manual');
+        }
       });
     }
-  }, [type]);
+  }, [setPickAddressType, type]);
 
   return (
     <Container>

@@ -8,7 +8,6 @@ import Input from 'src/components/Input';
 import { useAuth } from 'src/contexts/auth';
 import { MainNavigationProp, Screens } from 'src/Routes';
 import api from 'src/services/api';
-import Emitter, { EventTypes } from 'src/utils/Emitter';
 
 import {
   Container,
@@ -58,7 +57,6 @@ const Login = (): JSX.Element => {
             },
           });
 
-          Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
           navigation.navigate(Screens.Home);
         }
         setIsLoading(false);
@@ -103,6 +101,7 @@ const Login = (): JSX.Element => {
           <Button
             title={'Entrar'}
             onPress={() => {
+              formRef.current?.setErrors({});
               formRef.current?.submitForm();
             }}
             isLoading={isLoading}
@@ -112,7 +111,6 @@ const Login = (): JSX.Element => {
             colorStyle={'transparent'}
             disabled={isLoading}
             onPress={() => {
-              Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
               navigation.navigate(Screens.ForgotPassword);
             }}
           />

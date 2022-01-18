@@ -1,6 +1,7 @@
 import React from 'react';
 
 import PressableBlock from 'src/components/PressableBlock';
+import { isGpsFeatureEnabled } from 'src/config';
 
 import { Container, StepText } from './styles';
 
@@ -13,13 +14,15 @@ const PickAddressType = ({ onNext }: IProps): JSX.Element => {
     <Container>
       <StepText>2. Como irá inserir o endereço</StepText>
 
-      <PressableBlock
-        title={'GPS'}
-        icon={'map-marked-alt'}
-        onPress={() => onNext('gps')}
-        lightStyle={true}
-        isRow={false}
-      />
+      {isGpsFeatureEnabled && (
+        <PressableBlock
+          title={'GPS'}
+          icon={'map-marked-alt'}
+          onPress={() => onNext('gps')}
+          lightStyle={true}
+          isRow={false}
+        />
+      )}
       <PressableBlock
         title={'Manual (escrito)'}
         icon={'pencil-alt'}

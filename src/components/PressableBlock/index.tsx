@@ -13,6 +13,18 @@ interface IProps extends TouchableOpacityProps {
   floatElement?: JSX.Element | false;
 }
 
+export const lightBlockStyleColors = {
+  backgroundColor: Colors.lightTeal,
+  iconColor: Colors.teal,
+  textColor: Colors.black,
+};
+
+export const darkBlockStyleColors = {
+  backgroundColor: Colors.teal,
+  iconColor: Colors.lightTeal,
+  textColor: Colors.white,
+};
+
 const PressableBlock = ({
   title,
   icon,
@@ -22,18 +34,7 @@ const PressableBlock = ({
   ...props
 }: IProps): JSX.Element => {
   const pickedColors = useMemo(
-    () =>
-      lightStyle
-        ? {
-            backgroundColor: Colors.lightTeal,
-            iconColor: Colors.teal,
-            textColor: Colors.black,
-          }
-        : {
-            backgroundColor: Colors.teal,
-            iconColor: Colors.lightTeal,
-            textColor: Colors.white,
-          },
+    () => (lightStyle ? lightBlockStyleColors : darkBlockStyleColors),
     [lightStyle],
   );
 

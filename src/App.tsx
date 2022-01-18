@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -9,7 +9,6 @@ import AnimatedBackground from './components/AnimatedBackground';
 import AppProvider from './contexts';
 import Navigator from './Navigator';
 import { MainContainer } from './styles/Global';
-import Emitter, { EventTypes } from './utils/Emitter';
 
 // @ts-ignore
 FontAwesome5.getStyledIconSet('brand').loadFont();
@@ -29,10 +28,6 @@ const CustomNavigationTheme = {
 };
 
 const App = (): JSX.Element => {
-  useEffect(() => {
-    Emitter.emit(EventTypes.BackgroundAnim, { type: 'in' });
-  }, []);
-
   return (
     <NavigationContainer theme={CustomNavigationTheme}>
       <AppProvider>

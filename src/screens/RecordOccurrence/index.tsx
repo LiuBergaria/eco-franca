@@ -145,6 +145,7 @@ const RecordOccurrence = (): JSX.Element => {
 
             setCurrentPage(currentPage + 1);
           }}
+          setPickAddressType={setPickAddressType}
         />
         <Informations
           onNext={(incomingData) => {

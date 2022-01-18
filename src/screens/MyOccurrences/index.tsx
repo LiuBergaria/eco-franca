@@ -6,7 +6,6 @@ import OccurrenceCard, { IOccurrence } from 'src/components/OccurenceCard';
 import { useHeader } from 'src/contexts/header';
 import { MainNavigationProp, Screens } from 'src/Routes';
 import api from 'src/services/api';
-import Emitter, { EventTypes } from 'src/utils/Emitter';
 
 import { Container, List, LoaderContainer, Title } from './styles';
 
@@ -54,7 +53,6 @@ const MyOccurrences = (): JSX.Element => {
             data={item}
             lightStyle={index % 2 === 0}
             onPress={() => {
-              Emitter.emit(EventTypes.BackgroundAnim, { type: 'outIn' });
               navigation.navigate(Screens.ShowOccurrence, { id: item.id });
             }}
           />
