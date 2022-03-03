@@ -149,9 +149,9 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file('release.keystore')
+            storeFile file('ecofranca.keystore')
             storePassword 'ecofranca'
-            keyAlias 'release'
+            keyAlias 'ecofranca'
             keyPassword 'ecofranca'
         }
         debug {
