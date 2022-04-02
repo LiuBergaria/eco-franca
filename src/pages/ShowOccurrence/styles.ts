@@ -22,7 +22,6 @@ export const LoaderContainer = styled.div`
   }
 
   p {
-    font-family: 'Inter', sans-serif;
     font-size: 2rem;
     font-weight: 600;
 
@@ -40,7 +39,6 @@ export const SectionTitle = styled.h4`
 
   margin-bottom: 24px;
 
-  font-family: 'Inter', sans-serif;
   font-size: 2rem;
   font-weight: 600;
 
@@ -57,8 +55,7 @@ export const SectionTitle = styled.h4`
 
     background-color: ${Colors.red};
 
-    font-family: 'Inter', sans-serif;
-    font-family: 1.6rem;
+    font-size: 1.6rem;
     font-weight: 600;
 
     color: ${Colors.white};
@@ -79,7 +76,6 @@ export const DatetimeContainer = styled.div`
   }
 
   p {
-    font-family: 'Inter', sans-serif;
     font-weight: 500;
   }
 `;
@@ -98,7 +94,6 @@ export const SectionContainer = styled.div`
 
       margin-bottom: 24px;
 
-      font-family: 'Inter', sans-serif;
       font-weight: 500;
 
       span {
@@ -169,8 +164,7 @@ export const ChangeStatusButton = styled.button`
 
   background-color: ${Colors.teal};
 
-  font-family: 'Inter', sans-serif;
-  font-family: 1.6rem;
+  font-size: 1.6rem;
   font-weight: 600;
 
   color: ${Colors.white};

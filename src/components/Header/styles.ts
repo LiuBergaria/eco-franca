@@ -16,7 +16,6 @@ export const Content = styled.div`
   justify-content: space-between;
 
   h1 {
-    font-family: 'Inter', sans-serif;
     font-size: 2rem;
     font-weight: 600;
 
@@ -30,7 +29,6 @@ export const Content = styled.div`
 
     color: ${Colors.black};
 
-    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-size: 1.8rem;
     font-weight: 500;

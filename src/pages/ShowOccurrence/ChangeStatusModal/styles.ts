@@ -10,7 +10,6 @@ export const Container = styled.div`
   max-width: 100%;
 
   h4 {
-    font-family: 'Inter', sans-serif;
     font-size: 1.6rem;
     color: ${Colors.black};
 
@@ -18,7 +17,6 @@ export const Container = styled.div`
   }
 
   p {
-    font-family: 'Inter', sans-serif;
     font-size: 1.4rem;
     color: ${Colors.black};
 
@@ -41,7 +39,6 @@ export const Container = styled.div`
 
     background-color: ${transparentize(0.95, Colors.black)};
 
-    font-family: 'Inter', sans-serif;
     font-size: 1.4rem;
     font-weight: 400;
     color: ${Colors.black};
@@ -59,7 +56,6 @@ export const Container = styled.div`
 
     background-color: ${transparentize(0.95, Colors.black)};
 
-    font-family: 'Inter', sans-serif;
     font-size: 1.4rem;
     font-weight: 400;
     color: ${Colors.black};
@@ -84,7 +80,6 @@ export const Container = styled.div`
     border-radius: 4px;
     border: 0;
 
-    font-family: 'Inter';
     text-align: center;
 
     padding: 12px 16px;

@@ -32,7 +32,6 @@ export const SelectTypeContainer = styled.div`
     border-radius: 4px;
     border: 0;
 
-    font-family: 'Inter';
     text-align: center;
 
     &.selected {
@@ -70,7 +69,6 @@ export const SearchContainer = styled.div`
 
     background-color: ${transparentize(0.95, Colors.black)};
 
-    font-family: 'Inter', sans-serif;
     font-size: 1.4rem;
     font-weight: 400;
     color: ${Colors.black};
@@ -84,7 +82,6 @@ export const SearchContainer = styled.div`
     border-radius: 0 4px 4px 0;
     border: 0;
 
-    font-family: 'Inter';
     text-align: center;
 
     padding: 8px 16px;
@@ -100,7 +97,6 @@ export const SearchContainer = styled.div`
 
 export const GoToOccurrenceContainer = styled.div`
   h4 {
-    font-family: 'Inter', sans-serif;
     font-size: 1.6rem;
     font-weight: 600;
     color: ${Colors.black};
@@ -120,7 +116,6 @@ export const GoToOccurrenceContainer = styled.div`
 
       background-color: ${transparentize(0.95, Colors.black)};
 
-      font-family: 'Inter', sans-serif;
       font-size: 1.4rem;
       font-weight: 400;
       color: ${Colors.black};
@@ -134,7 +129,6 @@ export const GoToOccurrenceContainer = styled.div`
       border-radius: 0 4px 4px 0;
       border: 0;
 
-      font-family: 'Inter';
       text-align: center;
 
       padding: 8px 16px;

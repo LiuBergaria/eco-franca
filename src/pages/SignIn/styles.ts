@@ -24,7 +24,6 @@ export const Content = styled.div`
 
     h3 {
       text-align: center;
-      font-family: Inter, sans-serif;
       font-weight: 700;
       font-size: 2.1rem;
       color: var(--Black);
@@ -46,7 +45,6 @@ export const Content = styled.div`
 
     a {
       display: block;
-      font-family: 'Inter', sans-serif;
       width: 100%;
       text-align: center;
       text-decoration: none;
@@ -57,7 +55,6 @@ export const Content = styled.div`
     }
 
     strong {
-      font-family: 'Inter', sans-serif;
       font-size: 1.6rem;
       font-weight: 600;
       color: var(--Black);

@@ -14,6 +14,14 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  html, body, form, fieldset, table, tr, td, img {
+    font-family: Inter, sans-serif;
+  }
+
+  input, button, select, textarea, optgroup, option {
+    font-family: inherit;
+  }
+
   html {
     font-size: 10px;
   }
@@ -24,7 +32,6 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body, input, textarea, button {
-    font-family: 'Archivo', sans-serif;
     font-weight: 400;
     outline: none;
   }

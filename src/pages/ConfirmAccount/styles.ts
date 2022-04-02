@@ -21,7 +21,6 @@ export const Content = styled.div`
 
   h3 {
     margin: 2rem 1rem 0rem 1rem;
-    font-family: 'Inter', sans-serif;
     font-size: 2rem;
     font-weight: 550;
     line-height: 1.3;
@@ -39,7 +38,6 @@ export const Content = styled.div`
 
   span {
     max-width: 600px;
-    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 1.8rem;

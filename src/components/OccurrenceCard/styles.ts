@@ -41,7 +41,6 @@ export const Container = styled.a`
     }
 
     span {
-      font-family: 'Inter', sans-serif;
       font-weight: 500;
       font-size: 1rem;
     }
@@ -50,7 +49,6 @@ export const Container = styled.a`
       display: flex;
       align-items: center;
 
-      font-family: 'Inter', sans-serif;
       font-weight: 500;
       font-size: 1.4rem;
 

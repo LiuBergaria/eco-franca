@@ -52,7 +52,6 @@ export const Container = styled.div<ContainerProps>`
 
       font-size: 1.4rem;
       padding: 12px 16px 12px 48px;
-      font-family: 'Inter', sans-serif;
 
       ::placeholder {
         color: ${lighten(0.3, '#393E46')};
@@ -76,7 +75,6 @@ export const Error = styled(Tooltip)`
 `;
 
 export const ErrorText = styled.p`
-  font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 1.3rem;
   margin: 4px 0 16px;
