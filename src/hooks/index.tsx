@@ -9,9 +9,9 @@ type AuthProps = {
 
 function AppProvider({ children }: AuthProps): JSX.Element {
   return (
-    <AuthProvider>
-      <ToastProvider>{children}</ToastProvider>
-    </AuthProvider>
+    <ToastProvider>
+      <AuthProvider>{children}</AuthProvider>
+    </ToastProvider>
   );
 }
 

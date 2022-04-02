@@ -8,6 +8,7 @@ import React, {
   useEffect,
 } from 'react';
 import api from '../services/api';
+import { useToast } from './ToastContext';
 
 interface AuthContextProps {
   user: {
@@ -35,6 +36,8 @@ type AuthProps = {
 const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
 
 function AuthProvider({ children }: AuthProps): JSX.Element {
+  const { addToast } = useToast();
+
   const [isReady, setIsReady] = useState(false);
   const [data, setData] = useState<AuthState>(() => {
     const token = localStorage.getItem('@EcoFranca:token');
@@ -79,6 +82,11 @@ function AuthProvider({ children }: AuthProps): JSX.Element {
         (value.status === 400 && value.data.message === 'Token invalid');
 
       if (shouldSignOut) {
+        addToast({
+          title: 'Sua sessão expirou',
+          description: 'Por favor, entre novamente',
+          type: 'info',
+        });
         signOut();
       }
 
@@ -91,7 +99,7 @@ function AuthProvider({ children }: AuthProps): JSX.Element {
       setIsReady(false);
       api.interceptors.response.eject(interceptorId);
     };
-  }, [data, signOut]);
+  }, [addToast, data, signOut]);
 
   const isAuthenticated = !!data.user;
 
