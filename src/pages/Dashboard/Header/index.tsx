@@ -38,7 +38,7 @@ const Header = ({
     );
 
     if (response.status === 200) {
-      history.push(`/occurrence/${response.data.id}`);
+      history.push(`/ocorrencia/${response.data.id}`);
     } else if (response.status === 404) {
       addToast({
         title: 'Ocorrência não encontrada',

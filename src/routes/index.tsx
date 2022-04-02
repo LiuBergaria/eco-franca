@@ -31,7 +31,7 @@ export const Routes = (): JSX.Element => {
     <MainContainer>
       <Switch>
         <Route path="/" exact component={Dashboard} />
-        <Route path="/occurrence/:id" exact component={ShowOccurrence} />
+        <Route path="/ocorrencia/:id" exact component={ShowOccurrence} />
         <Route path="/cadastrar" exact component={SignUp} />
       </Switch>
     </MainContainer>

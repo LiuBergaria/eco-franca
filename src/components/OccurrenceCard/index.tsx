@@ -35,7 +35,7 @@ const OccurrenceCard = ({ data }: IProps): JSX.Element => {
   }, [datetime]);
 
   return (
-    <Container href={`/occurrence/${data.id}`}>
+    <Container href={`/ocorrencia/${data.id}`}>
       <div>
         <p>{title}</p>
         <div>
