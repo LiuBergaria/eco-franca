@@ -10,7 +10,7 @@ const OccurrencesContainer = ({ occurrences }: IProps): JSX.Element => {
   return (
     <Container>
       {occurrences.map(occurrence => (
-        <OccurrenceCard data={occurrence} />
+        <OccurrenceCard key={occurrence.id} data={occurrence} />
       ))}
     </Container>
   );
