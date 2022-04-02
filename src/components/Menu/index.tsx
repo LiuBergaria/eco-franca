@@ -1,4 +1,4 @@
-import { FiUser, FiHome, FiArchive } from 'react-icons/fi';
+import { FiUser, FiHome } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { Container } from './styles';
 
