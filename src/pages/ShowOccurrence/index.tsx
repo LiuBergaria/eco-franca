@@ -132,6 +132,7 @@ const ShowOccurrence = (): JSX.Element | null => {
 
   useEffect(() => {
     getOccurrence();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isLoading) {
