@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import SignIn from '../pages/SignIn';
 import ForgotPassword from '../pages/ForgotPassword';
@@ -17,12 +17,11 @@ export const Routes = (): JSX.Element => {
   if (!isAuthenticated) {
     return (
       <Switch>
-        <>
-          <Route path="/" exact component={SignIn} />
-          <Route path="/recuperar-senha" exact component={ForgotPassword} />
-          <Route path="/alterar-senha" exact component={ResetPassword} />
-          <Route path="/confirmacao/:id" exact component={ConfirmAccount} />
-        </>
+        <Route path="/" exact component={SignIn} />
+        <Route path="/recuperar-senha" exact component={ForgotPassword} />
+        <Route path="/alterar-senha" exact component={ResetPassword} />
+        <Route path="/confirmacao/:id" exact component={ConfirmAccount} />
+        <Route component={() => <Redirect to="/" />} />
       </Switch>
     );
   }
@@ -33,6 +32,7 @@ export const Routes = (): JSX.Element => {
         <Route path="/" exact component={Dashboard} />
         <Route path="/ocorrencia/:id" exact component={ShowOccurrence} />
         <Route path="/cadastrar" exact component={SignUp} />
+        <Route component={() => <Redirect to="/" />} />
       </Switch>
     </MainContainer>
   );
