@@ -6,7 +6,8 @@ export const Container = styled.header`
   align-items: center;
   width: 100%;
   padding: 24px 32px;
-  border-bottom: 1px solid ${Colors.black};
+  background-color: ${Colors.black};
+  color: ${Colors.white};
 `;
 
 export const Content = styled.div`
@@ -18,16 +19,12 @@ export const Content = styled.div`
   h1 {
     font-size: 2rem;
     font-weight: 600;
-
-    color: ${Colors.black};
   }
 
   span {
     display: flex;
     align-items: center;
     justify-content: space-around;
-
-    color: ${Colors.black};
 
     font-style: normal;
     font-size: 1.8rem;
