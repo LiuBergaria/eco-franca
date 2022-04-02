@@ -12,11 +12,6 @@ export default function Menu(): JSX.Element {
               <FiHome size={24} />
             </li>
           </Link>
-          <Link to="/recuperar">
-            <li>
-              <FiArchive size={24} />
-            </li>
-          </Link>
           <Link to="/cadastrar">
             <li>
               <FiUser size={24} />
