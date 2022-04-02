@@ -26,7 +26,7 @@ const Header = ({
   const { addToast } = useToast();
 
   const searchInputRef = useRef<HTMLInputElement>(null);
-  const goToOccurenceInputRef = useRef<HTMLInputElement>(null);
+  const goToOccurrenceInputRef = useRef<HTMLInputElement>(null);
 
   const [isLoadingOccurrence, setIsLoadingOccurrence] = useState(false);
 
@@ -34,7 +34,7 @@ const Header = ({
     setIsLoadingOccurrence(true);
 
     const response = await api.get(
-      `/occurrence/employee/number/${goToOccurenceInputRef.current?.value}`,
+      `/occurrence/employee/number/${goToOccurrenceInputRef.current?.value}`,
     );
 
     if (response.status === 200) {
@@ -94,7 +94,7 @@ const Header = ({
 
           <div>
             <input
-              ref={goToOccurenceInputRef}
+              ref={goToOccurrenceInputRef}
               type="text"
               placeholder="Nº da ocorrência"
               disabled={isLoadingOccurrence}
