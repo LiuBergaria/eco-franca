@@ -13,7 +13,7 @@ export default function Header(): JSX.Element {
   const title = useMemo(() => {
     switch (pathname) {
       case '/cadastrar':
-        return 'Cadastrar nova conta';
+        return 'Cadastrar novo administrador';
 
       default:
         return 'Página inicial';

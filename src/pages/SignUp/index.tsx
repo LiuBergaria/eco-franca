@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import React, { useRef, useCallback } from 'react';
 import { FiMail, FiLock } from 'react-icons/fi';
 import { Form } from '@unform/web';
@@ -81,8 +80,8 @@ export default function SignUp(): JSX.Element {
     <Container>
       <Content>
         <Form ref={formRef} onSubmit={handleSubmit}>
-          <h1>Criar uma nova conta</h1>
-          <strong>1. Informe os dados para cadastrar um novo usuario</strong>
+          <h1>Cadastrar usuário</h1>
+          <strong>1. Informe os dados do usuário</strong>
 
           <Input name="first_name" icon={FiMail} placeholder="Nome" />
           <Input name="last_name" icon={FiMail} placeholder="Sobrenome" />
