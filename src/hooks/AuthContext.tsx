@@ -16,7 +16,7 @@ interface AuthContextProps {
   };
   signIn(data: AuthState): Promise<void>;
   signOut(): void;
-  newAcount(data: AuthState): Promise<void>;
+  newAccount(data: AuthState): Promise<void>;
   isAuthenticated: boolean;
 }
 
@@ -35,12 +35,13 @@ type AuthProps = {
 const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
 
 function AuthProvider({ children }: AuthProps): JSX.Element {
+  const [isReady, setIsReady] = useState(false);
   const [data, setData] = useState<AuthState>(() => {
     const token = localStorage.getItem('@EcoFranca:token');
     const user = localStorage.getItem('@EcoFranca:user');
 
     if (token && user) {
-      api.defaults.headers.Authorization = `Bearer ${token}`;
+      api.defaults.headers.common.Authorization = `Bearer ${token}`;
 
       return { token, user: JSON.parse(user) };
     }
@@ -52,7 +53,7 @@ function AuthProvider({ children }: AuthProps): JSX.Element {
     localStorage.setItem('@EcoFranca:token', token);
     localStorage.setItem('@EcoFranca:user', JSON.stringify(user));
 
-    api.defaults.headers.Authorization = `Bearer ${token}`;
+    api.defaults.headers.common.Authorization = `Bearer ${token}`;
 
     setData({ token, user });
   }, []);
@@ -61,26 +62,34 @@ function AuthProvider({ children }: AuthProps): JSX.Element {
     localStorage.removeItem('@EcoFranca:token');
     localStorage.removeItem('@EcoFranca:user');
 
-    delete api.defaults.headers.Authorization;
+    delete api.defaults.headers.common.Authorization;
     setData({} as AuthState);
   }, []);
 
-  const newAcount = useCallback(async ({ token, user }) => {
-    api.defaults.headers.Authorization = `Bearer ${token}`;
+  const newAccount = useCallback(async ({ token, user }) => {
+    api.defaults.headers.common.Authorization = `Bearer ${token}`;
 
     setData({ token, user });
   }, []);
 
   useEffect(() => {
-    const id = api.interceptors.response.use(value => {
-      if (value.status === 401) {
+    const interceptorId = api.interceptors.response.use(value => {
+      const shouldSignOut =
+        value.status === 401 ||
+        (value.status === 400 && value.data.message === 'Token invalid');
+
+      if (shouldSignOut) {
         signOut();
       }
+
       return value;
     });
 
+    setIsReady(true);
+
     return () => {
-      api.interceptors.response.eject(id);
+      setIsReady(false);
+      api.interceptors.response.eject(interceptorId);
     };
   }, [data, signOut]);
 
@@ -88,9 +97,15 @@ function AuthProvider({ children }: AuthProps): JSX.Element {
 
   return (
     <AuthContext.Provider
-      value={{ user: data.user, signIn, signOut, isAuthenticated, newAcount }}
+      value={{
+        user: data.user,
+        signIn,
+        signOut,
+        isAuthenticated,
+        newAccount,
+      }}
     >
-      {children}
+      {isReady ? children : null}
     </AuthContext.Provider>
   );
 }

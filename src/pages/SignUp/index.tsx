@@ -26,7 +26,7 @@ interface SignUpFormProps {
 export default function SignUp(): JSX.Element {
   const formRef = useRef<FormHandles>(null);
 
-  const { newAcount } = useAuth();
+  const { newAccount } = useAuth();
 
   const handleSubmit = useCallback(
     async (registerProps: SignUpFormProps) => {
@@ -60,7 +60,7 @@ export default function SignUp(): JSX.Element {
             email: 'E-mail e/ou senha incorretos',
           });
         } else if (response.status === 200) {
-          newAcount({
+          newAccount({
             token: response.data,
             user: {
               first_name: response.data.first_name,
@@ -74,7 +74,7 @@ export default function SignUp(): JSX.Element {
         formRef.current?.setErrors(errors);
       }
     },
-    [newAcount],
+    [newAccount],
   );
 
   return (
