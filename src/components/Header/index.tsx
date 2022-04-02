@@ -11,13 +11,15 @@ export default function Header(): JSX.Element {
   const { signOut } = useAuth();
 
   const title = useMemo(() => {
-    switch (pathname) {
-      case '/cadastrar':
-        return 'Cadastrar novo administrador';
-
-      default:
-        return 'Página inicial';
+    if (pathname.match('/cadastrar')) {
+      return 'Cadastrar administrador';
     }
+
+    if (pathname.match('/ocorrencia')) {
+      return 'Detalhes da ocorrência';
+    }
+
+    return 'Página inicial';
   }, [pathname]);
 
   return (
