@@ -78,11 +78,12 @@ export default function ForgotPassword(): JSX.Element {
     <Container>
       <Content>
         <Form ref={formRef} onSubmit={handleSubmit}>
+          <h3>
+            Acesso <br />
+            <span>Administrativo</span>
+          </h3>
           <h1>Recuperar Senha</h1>
-          <strong>
-            1. Informe seu email para receber email, com link para recuperar a
-            senha
-          </strong>
+          <strong>1. Informe seu email</strong>
 
           <Input name="email" icon={FiMail} placeholder="E-mail" />
 
