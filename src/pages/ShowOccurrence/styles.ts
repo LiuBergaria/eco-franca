@@ -37,7 +37,7 @@ export const SectionTitle = styled.h4`
   display: flex;
   align-items: center;
 
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 
   font-size: 2rem;
   font-weight: 600;
@@ -85,26 +85,26 @@ export const SectionContainer = styled.div`
   grid-template-columns: 1.2fr 1.5fr 1fr;
   gap: 32px;
 
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 
   > div {
     > div {
       display: flex;
       flex-direction: column;
 
-      margin-bottom: 24px;
+      margin-bottom: 32px;
 
       font-weight: 500;
 
       span {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         font-weight: 600;
 
         color: ${transparentize(0.5, Colors.black)};
       }
 
       p {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
 
         color: ${Colors.black};
 
