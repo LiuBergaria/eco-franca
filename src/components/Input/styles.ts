@@ -11,19 +11,19 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 
   > div {
+    position: relative;
     background: ${lighten(0.7, '#393E46')};
     border-radius: 4px;
     width: 100%;
-    padding: 8px;
 
     border: 1px solid ${lighten(0.7, '#393E46')};
     color: ${lighten(0.3, '#393E46')};
 
     display: flex;
-    align-items: top;
+    align-items: center;
 
     ${props =>
       props.isErrored &&
@@ -50,7 +50,8 @@ export const Container = styled.div<ContainerProps>`
       background: transparent;
       border: 0;
 
-      font-size: 1.1rem;
+      font-size: 1.4rem;
+      padding: 12px 16px 12px 48px;
       font-family: 'Inter', sans-serif;
 
       ::placeholder {
@@ -59,7 +60,8 @@ export const Container = styled.div<ContainerProps>`
     }
 
     > svg {
-      margin-right: 16px;
+      position: absolute;
+      margin-left: 16px;
     }
   }
 `;
