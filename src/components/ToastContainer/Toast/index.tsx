@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   FiAlertCircle,
   FiCheckCircle,
@@ -7,10 +7,11 @@ import {
 } from 'react-icons/fi';
 import { Container } from './styles';
 
-import { ToastMessage, useToast } from '../../../hooks/ToastContext';
+import { ToastMessage } from '../../../hooks/ToastContext';
 
 interface ToastProps {
   message: ToastMessage;
+  removeToast: () => void;
 }
 
 const icons = {
@@ -19,19 +20,7 @@ const icons = {
   success: <FiCheckCircle size={20} />,
 };
 
-const Toast: React.FC<ToastProps> = ({ message }) => {
-  const { removeToast } = useToast();
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      removeToast(message.id);
-    }, 3000);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [removeToast, message.id]);
-
+const Toast: React.FC<ToastProps> = ({ message, removeToast }) => {
   return (
     <Container type={message.type} hasDescription={!!message.description}>
       {icons[message.type || 'info']}
@@ -41,7 +30,7 @@ const Toast: React.FC<ToastProps> = ({ message }) => {
         {message.description && <p>{message.description}</p>}
       </div>
 
-      <button onClick={() => removeToast(message.id)} type="button">
+      <button onClick={removeToast} type="button">
         <FiXCircle size={18} />
       </button>
     </Container>

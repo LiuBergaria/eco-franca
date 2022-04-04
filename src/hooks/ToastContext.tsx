@@ -9,9 +9,12 @@ import { v4 } from 'uuid';
 
 import ToastContainer from '../components/ToastContainer';
 
+type TAddToast = (
+  message: Omit<ToastMessage, 'id' | 'duration'> & { duration?: number },
+) => void;
+
 interface ToastContextData {
-  addToast(message: Omit<ToastMessage, 'id'>): void;
-  removeToast(id: string): void;
+  addToast: TAddToast;
 }
 
 export interface ToastMessage {
@@ -19,6 +22,7 @@ export interface ToastMessage {
   type?: 'success' | 'error' | 'info';
   title: string;
   description?: string;
+  duration: number;
 }
 
 type AuthProps = {
@@ -30,8 +34,12 @@ const ToastContext = createContext<ToastContextData>({} as ToastContextData);
 function ToastProvider({ children }: AuthProps): JSX.Element {
   const [messages, setMessages] = useState<ToastMessage[]>([]);
 
-  const addToast = useCallback(
-    ({ type, title, description }: Omit<ToastMessage, 'id'>) => {
+  const removeToast = useCallback((id: string) => {
+    setMessages(state => state.filter(message => message.id !== id));
+  }, []);
+
+  const addToast: TAddToast = useCallback(
+    ({ type, title, description, duration = 3000 }) => {
       const id = v4();
 
       const toast = {
@@ -39,21 +47,22 @@ function ToastProvider({ children }: AuthProps): JSX.Element {
         type,
         title,
         description,
+        duration,
       };
 
       setMessages(oldMessages => [...oldMessages, toast]);
+
+      setTimeout(() => {
+        removeToast(id);
+      }, duration);
     },
-    [],
+    [removeToast],
   );
 
-  const removeToast = useCallback((id: string) => {
-    setMessages(state => state.filter(message => message.id !== id));
-  }, []);
-
   return (
-    <ToastContext.Provider value={{ addToast, removeToast }}>
+    <ToastContext.Provider value={{ addToast }}>
       {children}
-      <ToastContainer messages={messages} />
+      <ToastContainer messages={messages} removeToast={removeToast} />
     </ToastContext.Provider>
   );
 }

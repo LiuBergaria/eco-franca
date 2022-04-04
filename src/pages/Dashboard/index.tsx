@@ -8,6 +8,7 @@ import OccurrenceTypes from '../../enums/OccurrenceTypes';
 import OccurrenceStatus from '../../enums/OccurrenceStatus';
 
 import Header from './Header';
+import { useToast } from '../../hooks/ToastContext';
 
 export interface IOccurrence {
   id: string;
@@ -26,6 +27,7 @@ export default function Dashboard(): JSX.Element {
   const [search, setSearch] = useState('');
   const [occurrences, setOccurrences] = useState<IOccurrence[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const { addToast } = useToast();
 
   const getOccurrences = useCallback(async () => {
     setIsLoading(true);
@@ -52,7 +54,9 @@ export default function Dashboard(): JSX.Element {
       <Main>
         <Header
           selectedType={selectedType}
-          setSelectedType={setSelectedType}
+          setSelectedType={() => {
+            addToast({ title: 'teste' });
+          }}
           search={setSearch}
         />
         {isLoading && (
