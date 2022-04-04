@@ -111,7 +111,7 @@ export default function SignIn(): JSX.Element {
           <Button isLoading={isLoading} type="submit">
             Entrar
           </Button>
-          <Link to="/recuperar-senha">Esqueci minha senha</Link>
+          {!isLoading && <Link to="/recuperar-senha">Esqueci minha senha</Link>}
         </Form>
       </Content>
 

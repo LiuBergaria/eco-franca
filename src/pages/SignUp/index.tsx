@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useState } from 'react';
 import { FiMail, FiLock } from 'react-icons/fi';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
@@ -23,12 +23,15 @@ interface SignUpFormProps {
 }
 
 export default function SignUp(): JSX.Element {
+  const [isLoading, setIsLoading] = useState(false);
   const formRef = useRef<FormHandles>(null);
 
   const { newAccount } = useAuth();
 
   const handleSubmit = useCallback(
     async (registerProps: SignUpFormProps) => {
+      setIsLoading(true);
+
       try {
         formRef.current?.setErrors({});
 
@@ -73,6 +76,8 @@ export default function SignUp(): JSX.Element {
 
           formRef.current?.setErrors(errors);
         }
+      } finally {
+        setIsLoading(false);
       }
     },
     [newAccount],
@@ -85,18 +90,41 @@ export default function SignUp(): JSX.Element {
           <h1>Cadastrar usuário</h1>
           <strong>1. Informe os dados do usuário</strong>
 
-          <Input name="first_name" icon={FiMail} placeholder="Nome" />
-          <Input name="last_name" icon={FiMail} placeholder="Sobrenome" />
-          <Input name="ra" icon={FiMail} placeholder="Chapa" />
-          <Input name="email" icon={FiMail} placeholder="E-mail" />
+          <Input
+            name="first_name"
+            icon={FiMail}
+            placeholder="Nome"
+            disabled={isLoading}
+          />
+          <Input
+            name="last_name"
+            icon={FiMail}
+            placeholder="Sobrenome"
+            disabled={isLoading}
+          />
+          <Input
+            name="ra"
+            icon={FiMail}
+            placeholder="Chapa"
+            disabled={isLoading}
+          />
+          <Input
+            name="email"
+            icon={FiMail}
+            placeholder="E-mail"
+            disabled={isLoading}
+          />
           <Input
             name="password"
             icon={FiLock}
             type="password"
             placeholder="Senha"
+            disabled={isLoading}
           />
 
-          <Button type="submit">Cadastrar</Button>
+          <Button type="submit" isLoading={isLoading}>
+            Cadastrar
+          </Button>
         </Form>
       </Content>
 
