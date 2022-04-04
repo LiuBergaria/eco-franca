@@ -9,8 +9,8 @@ import OccurrenceStatus from '../../enums/OccurrenceStatus';
 import OccurrenceTypes from '../../enums/OccurrenceTypes';
 import { useToast } from '../../hooks/ToastContext';
 import api from '../../services/api';
-import getOccurrenceStatusInformation from '../../utilsFunctions/getOccurrenceStatusInformation';
-import getOccurrenceTypeInformation from '../../utilsFunctions/getOccurrenceTypeInformation';
+import getOccurrenceStatusInformation from '../../utils/getOccurrenceStatusInformation';
+import getOccurrenceTypeInformation from '../../utils/getOccurrenceTypeInformation';
 import ChangeStatusModal from './ChangeStatusModal';
 import SetInformation from './SetInformation';
 import {

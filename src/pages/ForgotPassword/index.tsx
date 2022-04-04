@@ -14,7 +14,7 @@ import LogoSignIn from '../../assets/logo.svg';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import api from '../../services/api';
-import getValidationErrors from '../../utilsFunctions/getValidationErrors';
+import getValidationErrors from '../../utils/getValidationErrors';
 
 interface ForgotPasswordFormProps {
   email: string;
