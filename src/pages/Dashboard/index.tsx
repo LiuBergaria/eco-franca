@@ -54,9 +54,7 @@ export default function Dashboard(): JSX.Element {
       <Main>
         <Header
           selectedType={selectedType}
-          setSelectedType={() => {
-            addToast({ title: 'teste' });
-          }}
+          setSelectedType={setSelectedType}
           search={setSearch}
         />
         {isLoading && (
