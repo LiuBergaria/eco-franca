@@ -1,11 +1,9 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable import/no-unresolved */
-import React, { useRef, useCallback } from 'react';
+import { useRef, useCallback } from 'react';
 import { FiLock } from 'react-icons/fi';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { useToast } from '../../hooks/ToastContext';
 
@@ -28,9 +26,6 @@ export default function ResetPassword(): JSX.Element {
   const { addToast } = useToast();
 
   const history = useHistory();
-  const location = useLocation();
-
-  console.log(location);
 
   const handleSubmit = useCallback(
     async (resetProps: ResetPasswordFormProps) => {
@@ -67,7 +62,7 @@ export default function ResetPassword(): JSX.Element {
         });
       }
     },
-    [addToast, history, location.hash],
+    [addToast, history],
   );
 
   return (

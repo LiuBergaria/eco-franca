@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-types */
-import React, {
+import {
   createContext,
   useCallback,
   ReactNode,

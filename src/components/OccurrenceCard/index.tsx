@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import { useMemo } from 'react';
 import { format, differenceInDays } from 'date-fns';
 import { FaClock } from 'react-icons/fa';

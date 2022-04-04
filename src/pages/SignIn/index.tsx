@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import React, { useRef, useCallback, useState } from 'react';
 import { FiMail, FiLock } from 'react-icons/fi';
 import { Form } from '@unform/web';
