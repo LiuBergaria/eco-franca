@@ -9,7 +9,11 @@ export const Container = styled.a`
   padding: 12px 24px;
   border-radius: 4px;
 
-  background-color: ${transparentize(0.85, Colors.black)};
+  background-color: ${transparentize(0.6, Colors.lightTeal)};
+
+  &:nth-child(2n + 1) {
+    background-color: ${transparentize(0.75, Colors.teal)};
+  }
 
   cursor: pointer;
 
