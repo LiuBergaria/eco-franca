@@ -87,7 +87,7 @@ export default function ForgotPassword(): JSX.Element {
 
           <Input name="email" icon={FiMail} placeholder="E-mail" />
 
-          <Button loading={loading} type="submit">
+          <Button isLoading={loading} type="submit">
             Recuperar
           </Button>
           <Link to="/">Voltar ao login</Link>

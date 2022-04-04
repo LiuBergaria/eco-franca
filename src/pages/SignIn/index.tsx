@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useState } from 'react';
 import { FiMail, FiLock } from 'react-icons/fi';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
@@ -24,6 +24,7 @@ interface SignInFormProps {
 }
 
 export default function SignIn(): JSX.Element {
+  const [isLoading, setIsLoading] = useState(false);
   const formRef = useRef<FormHandles>(null);
 
   const { signIn } = useAuth();
@@ -32,6 +33,7 @@ export default function SignIn(): JSX.Element {
   const handleSubmit = useCallback(
     async (loginProps: SignInFormProps) => {
       try {
+        setIsLoading(true);
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
@@ -75,6 +77,8 @@ export default function SignIn(): JSX.Element {
           title: 'Erro na autenticação',
           description: 'Ocorreu um erro ao fazer login, cheque as credenciais.',
         });
+      } finally {
+        setIsLoading(false);
       }
     },
     [signIn, addToast],
@@ -91,15 +95,23 @@ export default function SignIn(): JSX.Element {
           <h1>Seja bem-vindo!</h1>
           <strong>1. Informe seu email e senha</strong>
 
-          <Input name="email" icon={FiMail} placeholder="E-mail" />
+          <Input
+            name="email"
+            icon={FiMail}
+            placeholder="E-mail"
+            disabled={isLoading}
+          />
           <Input
             name="password"
             icon={FiLock}
             type="password"
             placeholder="Senha"
+            disabled={isLoading}
           />
 
-          <Button type="submit">Entrar</Button>
+          <Button isLoading={isLoading} type="submit">
+            Entrar
+          </Button>
           <Link to="/recuperar-senha">Esqueci minha senha</Link>
         </Form>
       </Content>

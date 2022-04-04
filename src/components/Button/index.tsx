@@ -3,17 +3,17 @@ import React, { ButtonHTMLAttributes } from 'react';
 import { Container } from './styles';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  loading?: boolean;
+  isLoading?: boolean;
 };
 
 export default function Button({
-  loading,
+  isLoading,
   children,
   ...rest
 }: ButtonProps): JSX.Element {
   return (
-    <Container type="button" {...rest}>
-      {loading ? 'Carregando...' : children}
+    <Container type="button" {...rest} disabled={isLoading || rest.disabled}>
+      {isLoading ? 'Carregando...' : children}
     </Container>
   );
 }
