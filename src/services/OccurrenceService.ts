@@ -261,6 +261,7 @@ const getOccurrencesEmployee = async (
             violationNumber: occurrence.violationNumber,
             status: occurrence.status,
             occurrenceDate: occurrence.occurrenceDate,
+            markedToDeleteImages: occurrence.deleteImages,
         })),
         pages: countTotalPages,
     }
@@ -309,6 +310,7 @@ const getOccurrenceEmployee = async (
         photos: occurrence.photos.map(
             (photo) => process.env.URL_PHOTOS + '/' + photo.filaname
         ),
+        markedToDeleteImages: occurrence.deleteImages,
         violator: {
             name: occurrence?.violator?.name,
             vehicle: occurrence?.violator?.vehicle,

@@ -51,6 +51,7 @@ export type getOccurrenceEmployeeResponse = {
     photos: string[]
     violator: violator
     internalComments: internalComment[]
+    markedToDeleteImages: boolean
 }
 
 export type getOccurrenceEmployeeByIdResponse = {
