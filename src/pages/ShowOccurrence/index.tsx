@@ -308,7 +308,7 @@ const ShowOccurrence = (): JSX.Element | null => {
               <img
                 key={photo}
                 src={photo}
-                alt={`Foto da occorência de número ${i}`}
+                alt={`Foto da ocorrência de número ${i}`}
               />
             ))}
           </PhotosContainer>
