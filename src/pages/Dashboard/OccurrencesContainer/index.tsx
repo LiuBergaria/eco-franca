@@ -1,6 +1,6 @@
 import { IOccurrence } from '..';
 import OccurrenceCard from '../../../components/OccurrenceCard';
-import { Container } from './styles';
+import { Container, Content, NoOccurrencesMessage } from './styles';
 
 interface IProps {
   occurrences: IOccurrence[];
@@ -9,9 +9,17 @@ interface IProps {
 const OccurrencesContainer = ({ occurrences }: IProps): JSX.Element => {
   return (
     <Container>
-      {occurrences.map(occurrence => (
-        <OccurrenceCard key={occurrence.id} data={occurrence} />
-      ))}
+      <Content>
+        {occurrences.map(occurrence => (
+          <OccurrenceCard key={occurrence.id} data={occurrence} />
+        ))}
+      </Content>
+
+      {occurrences.length === 0 && (
+        <NoOccurrencesMessage>
+          Nenhuma ocorrência encontrada com os parâmetros selecionados
+        </NoOccurrencesMessage>
+      )}
     </Container>
   );
 };
