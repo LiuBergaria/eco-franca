@@ -60,6 +60,15 @@ export const SectionTitle = styled.h4`
 
     color: ${Colors.white};
   }
+
+  > span {
+    margin-left: 32px;
+
+    color: ${Colors.red};
+
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
 `;
 
 export const DatetimeContainer = styled.div`

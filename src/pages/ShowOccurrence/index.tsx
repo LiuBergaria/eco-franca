@@ -59,6 +59,7 @@ interface IFullOccurrence {
     otherInformation?: string;
   };
   internalComments: [];
+  markedToDeleteImages: boolean;
 }
 
 const ShowOccurrence = (): JSX.Element | null => {
@@ -86,9 +87,10 @@ const ShowOccurrence = (): JSX.Element | null => {
     const response = await api.patch(`/occurrence/${id}/delete-photos`);
 
     if (response.status === 204) {
+      getOccurrence();
       addToast({ title: 'As fotos foram marcadas para exclusão 00:00' });
     }
-  }, [addToast, id]);
+  }, [addToast, getOccurrence, id]);
 
   const defineOccurrenceNumber = useCallback(
     async (occurrenceNumber: string) => {
@@ -288,13 +290,17 @@ const ShowOccurrence = (): JSX.Element | null => {
         <>
           <SectionTitle>
             Fotos da ocorrência{' '}
-            <button
-              type="button"
-              className="delete-photos"
-              onClick={deletePhotos}
-            >
-              Apagar fotos
-            </button>
+            {occurrence.markedToDeleteImages ? (
+              <span>* Fotos marcadas para a exclusão</span>
+            ) : (
+              <button
+                type="button"
+                className="delete-photos"
+                onClick={deletePhotos}
+              >
+                Marcar fotos para exclusão
+              </button>
+            )}
           </SectionTitle>
 
           <PhotosContainer>
