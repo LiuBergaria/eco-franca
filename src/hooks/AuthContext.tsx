@@ -16,7 +16,6 @@ interface AuthContextProps {
   };
   signIn(data: AuthState): Promise<void>;
   signOut(): void;
-  newAccount(data: AuthState): Promise<void>;
   isAuthenticated: boolean;
 }
 
@@ -68,12 +67,6 @@ function AuthProvider({ children }: AuthProps): JSX.Element {
     setData({} as AuthState);
   }, []);
 
-  const newAccount = useCallback(async ({ token, user }) => {
-    api.defaults.headers.common.Authorization = `Bearer ${token}`;
-
-    setData({ token, user });
-  }, []);
-
   useEffect(() => {
     const interceptorId = api.interceptors.response.use(value => {
       const shouldSignOut =
@@ -109,7 +102,6 @@ function AuthProvider({ children }: AuthProps): JSX.Element {
         signIn,
         signOut,
         isAuthenticated,
-        newAccount,
       }}
     >
       {isReady ? children : null}

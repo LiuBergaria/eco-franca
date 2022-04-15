@@ -3,7 +3,6 @@ import { FiMail, FiLock } from 'react-icons/fi';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
-import { useAuth } from '../../hooks/AuthContext';
 import getValidationErrors from '../../utils/getValidationErrors';
 
 import { Container, Content, Background } from './styles';
@@ -13,6 +12,7 @@ import LogoSignIn from '../../assets/logo.svg';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import api from '../../services/api';
+import { useToast } from '../../hooks/ToastContext';
 
 interface SignUpFormProps {
   first_name: string;
@@ -25,8 +25,7 @@ interface SignUpFormProps {
 export default function SignUp(): JSX.Element {
   const [isLoading, setIsLoading] = useState(false);
   const formRef = useRef<FormHandles>(null);
-
-  const { newAccount } = useAuth();
+  const { addToast } = useToast();
 
   const handleSubmit = useCallback(
     async (registerProps: SignUpFormProps) => {
@@ -62,13 +61,11 @@ export default function SignUp(): JSX.Element {
             email: 'E-mail e/ou senha incorretos',
           });
         } else if (response.status === 200) {
-          newAccount({
-            token: response.data,
-            user: {
-              first_name: response.data.first_name,
-              last_name: response.data.last_name,
-            },
+          addToast({
+            title: 'Conta criada com sucesso!',
           });
+
+          formRef.current?.reset();
         }
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
@@ -80,7 +77,7 @@ export default function SignUp(): JSX.Element {
         setIsLoading(false);
       }
     },
-    [newAccount],
+    [addToast],
   );
 
   return (
