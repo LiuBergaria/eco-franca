@@ -50,11 +50,18 @@ export default function ResetPassword(): JSX.Element {
           abortEarly: false,
         });
 
-        const response = await api.post(`employee/recovery-password/${id}`, {
+        const response = await api.patch(`employee/recovery-password/${id}`, {
           password: resetProps.password,
         });
 
-        if (response.status === 404) {
+        if (response.status === 204) {
+          history.push('/');
+
+          addToast({
+            type: 'success',
+            title: 'Senha alterada com sucesso',
+          });
+        } else if (response.status === 404) {
           addToast({
             type: 'error',
             title: 'Erro ao alterar senha',
@@ -62,11 +69,10 @@ export default function ResetPassword(): JSX.Element {
               'Chave de recuperação de senha inválido, tente novamente',
           });
         } else {
-          history.push('/');
-
           addToast({
-            type: 'success',
-            title: 'Senha alterada com sucesso',
+            type: 'error',
+            title: 'Erro ao alterar senha',
+            description: 'Ocorreu um erro ao alterar a senha, tente novamente',
           });
         }
       } catch (err) {
