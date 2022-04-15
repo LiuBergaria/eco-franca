@@ -19,7 +19,7 @@ export const Routes = (): JSX.Element => {
       <Switch>
         <Route path="/" exact component={SignIn} />
         <Route path="/recuperar-senha" exact component={ForgotPassword} />
-        <Route path="/alterar-senha" exact component={ResetPassword} />
+        <Route path="/recuperar-senha/:id" exact component={ResetPassword} />
         <Route path="/confirmacao/:id" exact component={ConfirmAccount} />
         <Route component={() => <Redirect to="/" />} />
       </Switch>
