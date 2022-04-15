@@ -51,7 +51,7 @@ export default function ForgotPassword(): JSX.Element {
           type: 'success',
           title: 'E-mail de recuperação enviado',
           description:
-            'Enviamos um e-mail para confirmar a recuperação de senha, cheque sua caixa de entrada',
+            'Enviamos um e-mail para a recuperação de senha, cheque sua caixa de entrada',
         });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
@@ -64,7 +64,7 @@ export default function ForgotPassword(): JSX.Element {
           type: 'error',
           title: 'Erro na recuperação de senha',
           description:
-            'Ocorreu um erro ao tentar recuperação de senha, tente novamente. ',
+            'Ocorreu um erro ao realizar a solicitação, tente novamente',
         });
       } finally {
         setLoading(false);
