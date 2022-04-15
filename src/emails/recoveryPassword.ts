@@ -61,7 +61,7 @@ export default (first_name: string, urlChangePassword: string): string => {
                     <tr>
                         <td>
                             <p>
-                                Houve uma solicitação de senha.
+                                Houve uma solicitação de recuperação de senha com esse e-mail!
                             </p>
                         </td>
                     </tr>
@@ -69,14 +69,22 @@ export default (first_name: string, urlChangePassword: string): string => {
                     <tr>
                         <td>
                             <p>
-                                Caso tenha sido você clique no botão abaixo para recuperar a sua senha, caso contrario apenas ignore o e-mail.
+                                Para alterar sua senha, clique no botão abaixo, ou acesse: ${urlChangePassword}
                             </p>
                         </td>
                     </tr>
 
-                    <tr >
-                        <td >
-                            <a href="${urlChangePassword}" target="_blank">Esqueci Minha Senha</a>
+                    <tr>
+                        <td>
+                            <a href="${urlChangePassword}" target="_blank">Alterar Minha Senha</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <p>
+                                Caso você não tenha feito essa solicitação, por favor ignore esse e-mail.
+                            </p>
                         </td>
                     </tr>
                 </div>
