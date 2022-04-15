@@ -10,6 +10,7 @@ import { useAuth } from '../hooks/AuthContext';
 import MainContainer from '../components/MainContainer';
 import ShowOccurrence from '../pages/ShowOccurrence';
 import ResetPassword from '../pages/ResetPassword';
+import ResetCitizenPassword from '../pages/ResetCitizenPassword';
 
 export const Routes = (): JSX.Element => {
   const { isAuthenticated } = useAuth();
@@ -20,6 +21,11 @@ export const Routes = (): JSX.Element => {
         <Route path="/" exact component={SignIn} />
         <Route path="/recuperar-senha" exact component={ForgotPassword} />
         <Route path="/recuperar-senha/:id" exact component={ResetPassword} />
+        <Route
+          path="/cidadao/recuperar-senha/:id"
+          exact
+          component={ResetCitizenPassword}
+        />
         <Route path="/confirmacao/:id" exact component={ConfirmAccount} />
         <Route component={() => <Redirect to="/" />} />
       </Switch>
