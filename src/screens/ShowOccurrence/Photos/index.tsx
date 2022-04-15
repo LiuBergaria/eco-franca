@@ -33,7 +33,7 @@ const Photos = ({ photos }: IProps): JSX.Element => {
         </NoPhotosText>
       )}
 
-      {photos && photos.length && (
+      {photos && !!photos.length && (
         <Wrapper>
           {photos.map((photo) => (
             <Photo key={photo} source={{ uri: photo }} />
