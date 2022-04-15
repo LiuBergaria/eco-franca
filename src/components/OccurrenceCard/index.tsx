@@ -20,13 +20,13 @@ const OccurrenceCard = ({ data }: IProps): JSX.Element => {
   const notificationColor = useMemo(() => {
     const now = Date.now();
 
-    const days = differenceInDays(datetime, now);
+    const days = differenceInDays(now, datetime);
 
     if (days >= 7) {
       return 'red';
     }
 
-    if (days >= 1) {
+    if (days >= 3) {
       return 'yellow';
     }
 
