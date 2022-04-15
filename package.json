@@ -1,6 +1,6 @@
 {
   "name": "eco-franca",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "private": true,
   "dependencies": {
     "@unform/core": "^2.1.6",
