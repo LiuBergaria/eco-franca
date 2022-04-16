@@ -1,4 +1,4 @@
-import { FindConditions, getRepository, Like } from 'typeorm'
+import { FindConditions, getRepository, ILike } from 'typeorm'
 import fs from 'fs'
 
 import ForbiddenError from '../exceptions/ForbiddenError'
@@ -220,19 +220,55 @@ const getOccurrencesEmployee = async (
     const whereAnd: FindConditions<Occurrence> = {}
 
     if (filter !== undefined) {
-        if (filter === 'read') {
-            whereAnd.viewed = true
-        } else if (filter === 'unread') {
-            whereAnd.viewed = false
+        switch (filter) {
+            case 'read':
+                whereAnd.viewed = true
+                break
+            case 'unread':
+                whereAnd.viewed = false
+                break
         }
     }
 
-    if (Object.keys(whereAnd).length > 0) {
+    if (search !== undefined) {
+        search.trim()
+            .split(' ')
+            .filter(word => word.trim().length > 0)
+            .forEach(word => {
+                const likeSearch = ILike(`%${word}%`)
+                where.push({
+                        address: likeSearch,
+                    }, {
+                        number: likeSearch,
+                    }, {
+                        district: likeSearch,
+                    }, {
+                        reference: likeSearch,
+                    }, {
+                        district: likeSearch,
+                    }, {
+                        citizen: {
+                            first_name: likeSearch,
+                        },
+                    }, {
+                        citizen: {
+                            last_name: likeSearch,
+                        },
+                    })
+                })
+    }
+
+    if (where.length > 0) {
+        for (let i = 0; i < where.length; i++) {
+            where[i] = {...where[i], ...whereAnd}
+        }
+    } else {
         where.push(whereAnd)
     }
 
     const countTotalRows = await repository.count({
-        where,
+        where: where,
+        relations: ['citizen'],
     })
     const countTotalPages = Math.ceil(countTotalRows / limit)
 
@@ -243,6 +279,7 @@ const getOccurrencesEmployee = async (
         where: where,
         take: limit,
         skip: page * limit,
+        relations: ['citizen'],
     })
 
     return {

@@ -6,3 +6,4 @@
 !/public/.gitkeep
 yarn.lock
 package-lock.json
+/.idea
