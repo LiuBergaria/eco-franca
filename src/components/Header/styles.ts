@@ -50,4 +50,5 @@ export const SizedLogo = styled(Logo)`
   width: ${Dimensions.get('window').width * 0.21}px;
 
   margin-right: 16px;
+  margin-bottom: 8px;
 `;
