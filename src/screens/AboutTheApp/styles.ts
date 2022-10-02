@@ -18,15 +18,26 @@ export const Wrapper = styled.ScrollView`
 
 export const Header = styled.Text`
   font-family: ${Fonts.Inter.Medium};
-  font-size: 20px;
+  font-size: 16px;
   padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: justify;
+`;
+
+export const PersonsHeader = styled.Text`
+  font-family: ${Fonts.Inter.Medium};
+  font-size: 16px;
+  padding: 16px;
+  margin-top: 24px;
   margin-bottom: 16px;
   border-radius: 8px;
   overflow: hidden;
   text-align: center;
 `;
 
-export const PersonContainer = styled.View`
+export const PersonContainer = styled.TouchableOpacity`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -46,15 +57,44 @@ export const PersonName = styled.Text`
 
   flex: 1;
   margin-right: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
 `;
 
-export const PersonPhoto = styled.Image`
-  width: 90px;
-  aspect-ratio: 1;
+export const PersonsNote = styled.Text`
+  font-family: ${Fonts.Inter.Medium};
+  font-size: 14px;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
 `;
 
-export const LinkedInContainer = styled.Text`
+export const LinkedInText = styled.Text`
   font-family: ${Fonts.Inter.SemiBold};
   font-size: 14px;
+`;
+
+export const SupportersHeader = styled.Text`
+  font-family: ${Fonts.Inter.Medium};
+  font-size: 16px;
+  padding: 16px;
+  margin-top: 24px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+`;
+
+export const SupportersContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-radius: 8px;
+`;
+
+export const SupporterPhoto = styled.Image`
+  width: 48%;
+  height: 120px;
 `;

@@ -1,10 +1,8 @@
 import React from 'react';
 import { Linking } from 'react-native';
 
-import ArturPhoto from 'src/assets/artur-photo.jpeg';
-import GabrielPhoto from 'src/assets/gabriel-photo.jpeg';
-import HelilPhoto from 'src/assets/helil-photo.png';
-import PedroPhoto from 'src/assets/pedro-photo.jpeg';
+import MPSPLogo from 'src/assets/mpsp-logo.jpeg';
+import PrefeituraLogo from 'src/assets/prefeitura-logo.jpeg';
 import {
   darkBlockStyleColors,
   lightBlockStyleColors,
@@ -13,57 +11,78 @@ import {
 import {
   Container,
   Wrapper,
+  PersonsHeader,
   PersonContainer,
   PersonName,
-  PersonPhoto,
   PersonInfoContainer,
-  LinkedInContainer,
+  PersonsNote,
+  LinkedInText,
   Header,
+  SupportersHeader,
+  SupportersContainer,
+  SupporterPhoto,
 } from './styles';
 
 const persons = [
   {
     linkedIn: 'https://www.linkedin.com/in/helil-bergaria/',
     name: 'Helil Barbosa Bergária',
-    photo: HelilPhoto,
     colors: lightBlockStyleColors,
   },
   {
     linkedIn: 'https://www.linkedin.com/in/gabrielgarciasp/',
     name: 'Gabriel Henrique Leal Garcia',
-    photo: GabrielPhoto,
     colors: darkBlockStyleColors,
   },
   {
     linkedIn: 'https://www.linkedin.com/in/pedro-reis-bab804176/',
     name: 'Pedro Lima Reis',
-    photo: PedroPhoto,
     colors: lightBlockStyleColors,
   },
   {
     linkedIn: 'https://www.linkedin.com/in/artursilvestredeoliveira/',
     name: 'Artur Silvestre de Oliveira',
-    photo: ArturPhoto,
     colors: darkBlockStyleColors,
   },
 ];
 
+const textIndentation = '    ';
+
 const AboutTheApp = (): JSX.Element => {
   return (
     <Container>
-      <Wrapper>
+      <Wrapper contentContainerStyle={{ paddingBottom: 48 }}>
         <Header
+          style={{
+            backgroundColor: lightBlockStyleColors.backgroundColor,
+            color: lightBlockStyleColors.textColor,
+          }}
+        >
+          {textIndentation} O software EcoFranca foi desenvolvido a partir de um
+          evento chamado V Hackathon promovido pelo Departamento de Computação
+          do Uni-FACEF com o objetivo de empoderar o cidadão francano nas
+          questões ambientais e de urbanismo.
+          {'\n' + textIndentation}Através desta solução, o cidadão pode enviar
+          denúncias com os dados pertinentes, incluindo fotos, para a Guarda
+          Civil Municipal. Assim, o cidadão terá em suas mãos as ocorrências
+          enviadas, bem como as atualizações das providências tomadas pelas
+          autoridades competentes de cada ocorrência.
+        </Header>
+
+        <PersonsHeader
           style={{
             backgroundColor: darkBlockStyleColors.backgroundColor,
             color: darkBlockStyleColors.textColor,
           }}
         >
-          Projeto desenvolvido no 5º Hackathon da Uni-FACEF
-        </Header>
+          Conheça nossos desenvolvedores
+          {'\n'}(apenas durante o V Hackathon)
+        </PersonsHeader>
 
         {persons.map((person) => (
           <PersonContainer
             style={{ backgroundColor: person.colors.backgroundColor }}
+            onPress={() => Linking.openURL(person.linkedIn)}
             key={person.name}
           >
             <PersonInfoContainer>
@@ -71,16 +90,37 @@ const AboutTheApp = (): JSX.Element => {
                 {person.name}
               </PersonName>
 
-              <LinkedInContainer
-                style={{ color: person.colors.textColor }}
-                onPress={() => Linking.openURL(person.linkedIn)}
-              >
-                Clique aqui para abrir{'\n'}o perfil do LinkedIn
-              </LinkedInContainer>
+              <LinkedInText style={{ color: person.colors.textColor }}>
+                Clique aqui para abrir o perfil do LinkedIn
+              </LinkedInText>
             </PersonInfoContainer>
-            <PersonPhoto source={person.photo} />
           </PersonContainer>
         ))}
+
+
+        <PersonsNote
+          style={{
+            backgroundColor: lightBlockStyleColors.backgroundColor,
+            color: lightBlockStyleColors.textColor,
+          }}
+        >
+          Os desenvolvedores acima foram responsáveis pela criação da aplicação inicial e não se encontram no time de manuntenção do aplicativo. Caso tenha problemas, procure a prefeitura.
+        </PersonsNote>
+
+        <SupportersHeader
+          style={{
+            backgroundColor: lightBlockStyleColors.backgroundColor,
+            color: lightBlockStyleColors.textColor,
+          }}
+        >
+          Conheça nossos apoiadores
+        </SupportersHeader>
+        <SupportersContainer
+          style={{ backgroundColor: darkBlockStyleColors.backgroundColor }}
+        >
+          <SupporterPhoto source={MPSPLogo} resizeMode={'contain'} />
+          <SupporterPhoto source={PrefeituraLogo} resizeMode={'contain'} />
+        </SupportersContainer>
       </Wrapper>
     </Container>
   );
