@@ -36,33 +36,29 @@ const Login = (): JSX.Element => {
 
       const response = await api.post('/citizen/login', data);
 
-      setTimeout(() => {
-        if (response.status === 403) {
-          formRef.current?.setErrors({
-            cpf: 'Por favor, confirme seu e-mail para acessar',
-          });
-        } else if (response.status === 404) {
-          formRef.current?.setErrors({
-            cpf: 'CPF e/ou senha incorretos',
-          });
-        } else if (response.status === 200) {
-          signIn({
-            token: response.data.token,
-            user: {
-              first_name: response.data.first_name,
-              last_name: response.data.last_name,
-              cpf: response.data.cpf,
-              phone_number: response.data.phone_number,
-              email: response.data.email,
-            },
-          });
-
-          navigation.navigate(Screens.Home);
-        }
-        setIsLoading(false);
-      }, 2000);
+      if (response.status === 403) {
+        formRef.current?.setErrors({
+          cpf: 'Por favor, confirme seu e-mail para acessar',
+        });
+      } else if (response.status === 404) {
+        formRef.current?.setErrors({
+          cpf: 'CPF e/ou senha incorretos',
+        });
+      } else if (response.status === 200) {
+        signIn({
+          token: response.data.token,
+          user: {
+            first_name: response.data.first_name,
+            last_name: response.data.last_name,
+            cpf: response.data.cpf,
+            phone_number: response.data.phone_number,
+            email: response.data.email,
+          },
+        });
+      }
+      setIsLoading(false);
     },
-    [navigation, signIn],
+    [signIn],
   );
 
   return (
