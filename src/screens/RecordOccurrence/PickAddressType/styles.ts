@@ -7,7 +7,7 @@ import Fonts from 'src/styles/Fonts';
 export const Container = styled.ScrollView`
   flex: 1;
   width: ${Dimensions.get('window').width}px;
-  padding: 24px;
+  padding: 0 24px;
 `;
 
 export const StepText = styled.Text`

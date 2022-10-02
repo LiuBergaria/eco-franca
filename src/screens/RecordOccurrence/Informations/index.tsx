@@ -2,6 +2,7 @@ import React, { useState, useMemo, useCallback, useRef } from 'react';
 
 import { FormHandles, SubmitHandler } from '@unform/core';
 import { Asset, launchImageLibrary } from 'react-native-image-picker';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as Yup from 'yup';
 
 import Button from 'src/components/Button';
@@ -37,6 +38,8 @@ const Informations = ({ onNext }: IProps): JSX.Element => {
 
   const [assets, setAssets] = useState<Asset[]>([]);
   const [isLoadingAssets, setIsLoadingAssets] = useState(false);
+
+  const insets = useSafeAreaInsets();
 
   const submit: SubmitHandler<IData> = async (data): Promise<void> => {
     try {
@@ -84,8 +87,13 @@ const Informations = ({ onNext }: IProps): JSX.Element => {
     return Array.from({ length }, (_, i) => i);
   }, [assets.length]);
 
+  const containerStyle = {
+    paddingBottom: insets.bottom + 24,
+    paddingTop: 24,
+  };
+
   return (
-    <Container>
+    <Container contentContainerStyle={containerStyle}>
       <StepText>
         4. Preencha a data, hora, observações e selecione fotos
       </StepText>

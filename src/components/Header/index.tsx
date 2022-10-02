@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { Animated } from 'react-native';
 
 import { StackHeaderProps } from '@react-navigation/stack';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useHeader } from 'src/contexts/header';
 
@@ -16,6 +17,7 @@ import {
 
 const Header = (props: StackHeaderProps): JSX.Element => {
   const { goBackCallback, showLogo } = useHeader();
+  const insets = useSafeAreaInsets();
 
   const logoShowAnim = useRef(new Animated.Value(0));
 
@@ -33,7 +35,7 @@ const Header = (props: StackHeaderProps): JSX.Element => {
   }, [showLogo]);
 
   return (
-    <Container>
+    <Container style={{ marginTop: insets.top }}>
       {hasBackButton && (
         <BackButtonContainer onPress={goBack}>
           <BackButtonIcon />

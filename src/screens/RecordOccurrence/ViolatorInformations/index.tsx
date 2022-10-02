@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 
 import { FormHandles, SubmitHandler } from '@unform/core';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as Yup from 'yup';
 
 import Button from 'src/components/Button';
@@ -35,6 +36,8 @@ const ViolatorInformations = ({ onNext }: IProps): JSX.Element => {
     undefined,
   );
 
+  const insets = useSafeAreaInsets();
+
   const submit: SubmitHandler<IData> = async (data): Promise<void> => {
     try {
       await violatorInformationsSchema.validate(data, { abortEarly: false });
@@ -47,8 +50,13 @@ const ViolatorInformations = ({ onNext }: IProps): JSX.Element => {
     }
   };
 
+  const containerStyle = {
+    paddingBottom: insets.bottom + 24,
+    paddingTop: 24,
+  };
+
   return (
-    <Container>
+    <Container contentContainerStyle={containerStyle}>
       <StepText>5. Você tem informações sobre o infrator?</StepText>
 
       <Switch selected={selectedOption} setSelected={setSelectedOption} />

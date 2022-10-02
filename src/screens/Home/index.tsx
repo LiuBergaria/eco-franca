@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { useNavigation } from '@react-navigation/native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import NotificationBadger from 'src/components/NotificationBadger';
 import PressableBlock from 'src/components/PressableBlock';
@@ -11,6 +12,7 @@ import { Container, ItemsContainer, Wrapper } from './styles';
 
 const Home = (): JSX.Element => {
   const navigation = useNavigation<MainNavigationProp>();
+  const insets = useSafeAreaInsets();
   const [notificationsCount, setNotificationsCount] = useState(0);
 
   const loadNotificationsCount = async (): Promise<void> => {
@@ -23,9 +25,14 @@ const Home = (): JSX.Element => {
     loadNotificationsCount();
   }, []);
 
+  const wrapperStyle = {
+    paddingBottom: insets.bottom + 24,
+    paddingTop: 24,
+  };
+
   return (
     <Container>
-      <Wrapper>
+      <Wrapper contentContainerStyle={wrapperStyle}>
         <ItemsContainer>
           <PressableBlock
             title={'Registrar\nOcorrência'}

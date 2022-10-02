@@ -7,15 +7,11 @@ export const Container = styled.View`
   align-items: center;
 `;
 
-export const Wrapper = styled.ScrollView.attrs({
-  contentContainerStyle: {
-    alignItems: 'flex-end',
-  },
-})`
+export const Wrapper = styled.ScrollView`
   flex: 1;
 
   width: 100%;
-  padding: 24px;
+  padding: 0 24px;
 `;
 
 export const ItemsContainer = styled.View`

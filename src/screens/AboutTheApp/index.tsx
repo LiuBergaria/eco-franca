@@ -1,6 +1,8 @@
 import React from 'react';
 import { Linking } from 'react-native';
 
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
 import MPSPLogo from 'src/assets/mpsp-logo.jpeg';
 import PrefeituraLogo from 'src/assets/prefeitura-logo.jpeg';
 import {
@@ -46,23 +48,25 @@ const persons = [
   },
 ];
 
-const textIndentation = '    ';
+const textIndentation = '  ';
 
 const AboutTheApp = (): JSX.Element => {
+  const insets = useSafeAreaInsets();
+
   return (
     <Container>
-      <Wrapper contentContainerStyle={{ paddingBottom: 48 }}>
+      <Wrapper contentContainerStyle={{ paddingBottom: insets.bottom + 24 }}>
         <Header
           style={{
             backgroundColor: lightBlockStyleColors.backgroundColor,
             color: lightBlockStyleColors.textColor,
           }}
         >
-          {textIndentation} O software EcoFranca foi desenvolvido a partir de um
+          {textIndentation}O software EcoFranca foi desenvolvido a partir de um
           evento chamado V Hackathon promovido pelo Departamento de Computação
           do Uni-FACEF com o objetivo de empoderar o cidadão francano nas
           questões ambientais e de urbanismo.
-          {'\n' + textIndentation}Através desta solução, o cidadão pode enviar
+          {'\n\n' + textIndentation}Através desta solução, o cidadão pode enviar
           denúncias com os dados pertinentes, incluindo fotos, para a Guarda
           Civil Municipal. Assim, o cidadão terá em suas mãos as ocorrências
           enviadas, bem como as atualizações das providências tomadas pelas
@@ -97,14 +101,15 @@ const AboutTheApp = (): JSX.Element => {
           </PersonContainer>
         ))}
 
-
         <PersonsNote
           style={{
             backgroundColor: lightBlockStyleColors.backgroundColor,
             color: lightBlockStyleColors.textColor,
           }}
         >
-          Os desenvolvedores acima foram responsáveis pela criação da aplicação inicial e não se encontram no time de manuntenção do aplicativo. Caso tenha problemas, procure a prefeitura.
+          Os desenvolvedores acima foram responsáveis pela criação da aplicação
+          inicial e não se encontram no time de manuntenção do aplicativo. Caso
+          tenha problemas, procure a prefeitura.
         </PersonsNote>
 
         <SupportersHeader

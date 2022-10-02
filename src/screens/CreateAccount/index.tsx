@@ -2,6 +2,7 @@ import React, { useRef, useCallback, useState, useEffect } from 'react';
 import { ScrollView, Dimensions } from 'react-native';
 
 import { StackActions, useNavigation } from '@react-navigation/native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useHeader } from 'src/contexts/header';
 import { MainNavigationProp, Screens } from 'src/Routes';
@@ -30,6 +31,7 @@ const CreateAccount = (): JSX.Element => {
 
   const navigation = useNavigation<MainNavigationProp>();
   const { addGoBackCallback, resetGoBackCallback } = useHeader();
+  const insets = useSafeAreaInsets();
 
   const scrollTo = useCallback((page: number) => {
     scrollRef.current?.scrollTo({
@@ -82,6 +84,7 @@ const CreateAccount = (): JSX.Element => {
               snapToInterval={Dimensions.get('window').width}
               showsHorizontalScrollIndicator={false}
               scrollEnabled={false}
+              contentContainerStyle={{ paddingBottom: insets.bottom + 24 }}
             >
               <CPFSectionBlock
                 goNext={(incomingData) => {

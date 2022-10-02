@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
 import PressableBlock from 'src/components/PressableBlock';
 import { isGpsFeatureEnabled } from 'src/config';
 
@@ -10,8 +12,15 @@ interface IProps {
 }
 
 const PickAddressType = ({ onNext }: IProps): JSX.Element => {
+  const insets = useSafeAreaInsets();
+
+  const containerStyle = {
+    paddingBottom: insets.bottom + 24,
+    paddingTop: 24,
+  };
+
   return (
-    <Container>
+    <Container contentContainerStyle={containerStyle}>
       <StepText>2. Como irá inserir o endereço</StepText>
 
       {isGpsFeatureEnabled && (

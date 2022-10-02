@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
 import OccurrenceTypes from 'src/enums/OccurrenceTypes';
 import getOccurrenceTypeInformation from 'src/utils/getOccurrenceTypeInformation';
 
@@ -28,12 +30,19 @@ const items = [
 ];
 
 const SelectProblem = ({ onNext }: IProps): JSX.Element => {
+  const insets = useSafeAreaInsets();
+
   const submit = (type: OccurrenceTypes): void => {
     onNext({ category: type });
   };
 
+  const containerStyle = {
+    paddingBottom: insets.bottom + 24,
+    paddingTop: 24,
+  };
+
   return (
-    <Container>
+    <Container contentContainerStyle={containerStyle}>
       <StepText>1. Escolha o tipo de problema</StepText>
 
       <TypesContainer>

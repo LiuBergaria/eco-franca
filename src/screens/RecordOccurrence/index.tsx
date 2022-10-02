@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Dimensions, Platform, ScrollView } from 'react-native';
 
 import { Asset } from 'react-native-image-picker';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useHeader } from 'src/contexts/header';
 import OccurrenceTypes from 'src/enums/OccurrenceTypes';
@@ -45,6 +46,7 @@ const RecordOccurrence = (): JSX.Element => {
   );
 
   const { addGoBackCallback, resetGoBackCallback } = useHeader();
+  const insets = useSafeAreaInsets();
 
   const scrollTo = useCallback((page: number) => {
     scrollRef.current?.scrollTo({
@@ -123,6 +125,7 @@ const RecordOccurrence = (): JSX.Element => {
         snapToInterval={Dimensions.get('window').width}
         showsHorizontalScrollIndicator={false}
         scrollEnabled={false}
+        contentContainerStyle={{ paddingBottom: insets.bottom + 24 }}
       >
         <SelectProblem
           onNext={(incomingData) => {

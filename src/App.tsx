@@ -8,7 +8,6 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import AnimatedBackground from './components/AnimatedBackground';
 import AppProvider from './contexts';
 import Navigator from './Navigator';
-import { MainContainer } from './styles/Global';
 
 // @ts-ignore
 FontAwesome5.getStyledIconSet('brand').loadFont();
@@ -33,9 +32,7 @@ const App = (): JSX.Element => {
       <AppProvider>
         <AnimatedBackground />
 
-        <MainContainer>
-          <Navigator />
-        </MainContainer>
+        <Navigator />
       </AppProvider>
     </NavigationContainer>
   );

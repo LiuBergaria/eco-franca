@@ -13,7 +13,7 @@ export const Wrapper = styled.ScrollView`
   flex: 1;
 
   width: 100%;
-  padding: 24px;
+  padding: 0 24px;
 `;
 
 export const Header = styled.Text`

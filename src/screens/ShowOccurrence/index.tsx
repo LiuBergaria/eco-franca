@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 
 import { useFocusEffect, useRoute } from '@react-navigation/native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import OccurrenceCard from 'src/components/OccurenceCard';
 import { useHeader } from 'src/contexts/header';
@@ -46,6 +47,7 @@ const ShowOccurrence = (): JSX.Element => {
     params: { id },
   } = useRoute<ShowOccurrenceScreenProps>();
   const { resetGoBackCallback } = useHeader();
+  const insets = useSafeAreaInsets();
 
   const [occurrence, setOccurrence] = useState<IFullOccurrence>();
   const [isLoading, setIsLoading] = useState(false);
@@ -79,9 +81,14 @@ const ShowOccurrence = (): JSX.Element => {
     ? `Ocorrência n° ${occurrence?.occurrenceNumber}`
     : 'Ocorrência criada';
 
+  const wrapperStyle = {
+    paddingBottom: insets.bottom + 24,
+    paddingTop: 24,
+  };
+
   return (
     <Container>
-      <Wrapper scrollEnabled={!isLoading}>
+      <Wrapper scrollEnabled={!isLoading} contentContainerStyle={wrapperStyle}>
         <Title>{title}</Title>
 
         {isLoading && !occurrence && (

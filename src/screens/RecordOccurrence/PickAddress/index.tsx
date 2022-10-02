@@ -4,6 +4,7 @@ import { PermissionsAndroid, Platform } from 'react-native';
 import { FormHandles, SubmitHandler } from '@unform/core';
 import Geolocation from 'react-native-geolocation-service';
 import { Marker } from 'react-native-maps';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as Yup from 'yup';
 
 import Button from 'src/components/Button';
@@ -43,6 +44,8 @@ const PickAddress = ({
 
   const [coordinates, setCoordinates] = useState<ICoords>();
   const [isLoading, setIsLoading] = useState(false);
+
+  const insets = useSafeAreaInsets();
 
   const submit: SubmitHandler<IData> = async (data): Promise<void> => {
     setIsLoading(true);
@@ -107,8 +110,13 @@ const PickAddress = ({
     }
   }, [setPickAddressType, type]);
 
+  const containerStyle = {
+    paddingBottom: insets.bottom + 24,
+    paddingTop: 24,
+  };
+
   return (
-    <Container>
+    <Container contentContainerStyle={containerStyle}>
       <StepText>3. Confirme o endereço</StepText>
 
       {type === 'manual' && (
