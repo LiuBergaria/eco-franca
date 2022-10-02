@@ -2,12 +2,20 @@ import React, { useState, useEffect } from 'react';
 
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 
+import Button from 'src/components/Button';
 import OccurrenceCard, { IOccurrence } from 'src/components/OccurenceCard';
 import { useHeader } from 'src/contexts/header';
 import { MainNavigationProp, Screens } from 'src/Routes';
 import api from 'src/services/api';
 
-import { Container, List, LoaderContainer, Title } from './styles';
+import {
+  Container,
+  List,
+  LoaderContainer,
+  Title,
+  NoOccurrencesText,
+  NoOccurrencesContainer,
+} from './styles';
 
 const MyOccurrences = (): JSX.Element => {
   const navigation = useNavigation<MainNavigationProp>();
@@ -43,6 +51,20 @@ const MyOccurrences = (): JSX.Element => {
           <OccurrenceCard.Loader lightStyle={true} />
           <OccurrenceCard.Loader />
         </LoaderContainer>
+      )}
+
+      {!isLoading && !occurrences.length && (
+        <NoOccurrencesContainer>
+          <NoOccurrencesText>
+            Você ainda não tem{'\n'}nenhuma ocorrência registrada
+          </NoOccurrencesText>
+          <Button
+            title={'Registrar nova ocorrência'}
+            onPress={() => {
+              navigation.navigate(Screens.RecordOccurrence);
+            }}
+          />
+        </NoOccurrencesContainer>
       )}
 
       <List

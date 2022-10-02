@@ -26,7 +26,7 @@ const RecordOccurrenceSuccess = (): JSX.Element => {
       <Button
         title={'Ir para home'}
         onPress={() => {
-          navigation.dispatch(StackActions.pop(1));
+          navigation.dispatch(StackActions.popToTop());
         }}
       />
     </Container>

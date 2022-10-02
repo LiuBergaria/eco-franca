@@ -27,3 +27,17 @@ export const List = styled(FlatList as new () => FlatList<IOccurrence>)`
 export const LoaderContainer = styled.View`
   padding: 0 24px;
 `;
+
+export const NoOccurrencesText = styled.Text`
+  padding: 24px 24px 16px;
+
+  font-family: ${Fonts.Inter.Medium};
+  font-size: 18px;
+  text-align: center;
+
+  color: ${({ theme }) => theme.foreground};
+`;
+
+export const NoOccurrencesContainer = styled.View`
+  padding: 24px;
+`;
