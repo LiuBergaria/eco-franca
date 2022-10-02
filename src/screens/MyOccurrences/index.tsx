@@ -50,6 +50,9 @@ const MyOccurrences = (): JSX.Element => {
         <LoaderContainer>
           <OccurrenceCard.Loader lightStyle={true} />
           <OccurrenceCard.Loader />
+          <OccurrenceCard.Loader lightStyle={true} />
+          <OccurrenceCard.Loader />
+          <OccurrenceCard.Loader lightStyle={true} />
         </LoaderContainer>
       )}
 
