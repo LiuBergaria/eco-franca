@@ -23,6 +23,7 @@ import {
   SupportersHeader,
   SupportersContainer,
   SupporterPhoto,
+  EmailText,
 } from './styles';
 
 const persons = [
@@ -47,6 +48,8 @@ const persons = [
     colors: darkBlockStyleColors,
   },
 ];
+
+const emailPrefeitura = 'suporteti@franca.sp.gov.br';
 
 const textIndentation = '  ';
 
@@ -109,7 +112,8 @@ const AboutTheApp = (): JSX.Element => {
         >
           Os desenvolvedores acima foram responsáveis pela criação da aplicação
           inicial e não se encontram no time de manuntenção do aplicativo. Caso
-          tenha problemas, procure a prefeitura.
+          tenha problemas, envie um e-mail para:{' '}
+          <EmailText>{emailPrefeitura}</EmailText>
         </PersonsNote>
 
         <SupportersHeader

@@ -70,6 +70,10 @@ export const PersonsNote = styled.Text`
   text-align: center;
 `;
 
+export const EmailText = styled.Text`
+  font-weight: bold;
+`;
+
 export const LinkedInText = styled.Text`
   font-family: ${Fonts.Inter.SemiBold};
   font-size: 14px;
