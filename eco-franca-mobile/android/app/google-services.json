@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1036903420941",
+    "project_id": "ecofranca-test",
+    "storage_bucket": "ecofranca-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1036903420941:android:7582e4a3859d4570e97144",
+        "android_client_info": {
+          "package_name": "com.ecofranca"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1036903420941-tbq850a451b3094pvamp6g71tvkl7ed2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDExZTBCqXL5_FD3DFiPtr-Kqa-BLxvZz0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1036903420941-tbq850a451b3094pvamp6g71tvkl7ed2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
